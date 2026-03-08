@@ -19,6 +19,10 @@ dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
 
+    // Source: https://mvnrepository.com/artifact/com.rometools/rome
+    // Library to parse rss feed
+    implementation("com.rometools:rome:2.1.0")
+
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // This dependency is used by the application.

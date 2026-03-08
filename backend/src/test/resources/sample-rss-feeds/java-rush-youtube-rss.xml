@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCNhH5zc8-_Hc7aE-wH7lM-g"/>
+ <id>yt:channel:NhH5zc8-_Hc7aE-wH7lM-g</id>
+ <yt:channelId>NhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+ <title>Java Rush</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g"/>
+ <author>
+  <name>Java Rush</name>
+  <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+ </author>
+ <published>2023-05-16T14:32:02+00:00</published>
+ <entry>
+  <id>yt:video:1suDMh2sy_M</id>
+  <yt:videoId>1suDMh2sy_M</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Serve Single Page Applications using Spring Boot - React, Vue, anything #react #vuejs #spring #java</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=1suDMh2sy_M"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2026-01-27T04:30:03+00:00</published>
+  <updated>2026-02-24T15:39:06+00:00</updated>
+  <media:group>
+   <media:title>Serve Single Page Applications using Spring Boot - React, Vue, anything #react #vuejs #spring #java</media:title>
+   <media:content url="https://www.youtube.com/v/1suDMh2sy_M?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/1suDMh2sy_M/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we serve multiple single page applications from a single spring boot backend. For single page application, any framework or library of choice can be used - react, vuejs, angular, svelte. We will address different problems we face while serving single page application from spring boot, related to routing, assets location and security. We will also see how to incorporate single page build process into the spring boot app's build process and how to enable rapid development in watch mode.
+
+Some useful links:
+1. Repository - https://github.com/himanshu-pareek/spring-spa
+2. Securing Single Page Applications with Spring Security 🔐 - https://www.youtube.com/playlist?list=PLbk-lC-jmHejQqn3ZzH7fuczWJiddjFuz
+3. MFA in Spring Security 7 - Multifactor Authentication (MFA) in Spring Security 7
+4. gradle-node-plugin - https://github.com/node-gradle/gradle-node-plugin
+5. Tic-Tac-Toe Tutorial in React - https://react.dev/learn/tutorial-tic-tac-toe
+6. Vue.js Quick Start - https://vuejs.org/guide/quick-start.html
+7. Vite - https://vite.dev/guide/cli
+8. npm-watch - https://github.com/M-Zuber/npm-watch
+
+#spring #springboot #gradle #programming #java #nodejs #reactjs #vuejs #vite #npm #webdevelopment #security #springsecurity #tutorial</media:description>
+   <media:community>
+    <media:starRating count="2" average="5.00" min="1" max="5"/>
+    <media:statistics views="59"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:9srwcQxvUCw</id>
+  <yt:videoId>9srwcQxvUCw</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Multifactor Authentication (MFA) in Spring Security 7 #springsecurity #multifactorauthentication</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=9srwcQxvUCw"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-12-22T04:30:05+00:00</published>
+  <updated>2026-02-16T19:55:56+00:00</updated>
+  <media:group>
+   <media:title>Multifactor Authentication (MFA) in Spring Security 7 #springsecurity #multifactorauthentication</media:title>
+   <media:content url="https://www.youtube.com/v/9srwcQxvUCw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/9srwcQxvUCw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will look at the Multi Factor Authentication using Spring Security introduced in Version 7. We will look at the following features of it:
+- Application Level MFA
+- MFA configurations at endpoint level
+- Time-bound MFA
+- User-centric MFA
+
+You can find the code in the following GitHub Repository:
+- https://github.com/himanshu-pareek/spring-security-7-features/tree/main/mfa
+
+Please fine the below useful resources:
+- Multifactor Authentication (OWASP) - https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html
+- What's new in Spring Security 7.0 - https://docs.spring.io/spring-security/reference/whats-new.html
+- Spring Security Release Notes - https://github.com/spring-projects/spring-security/releases
+- Multifactor Authentication (Spring Security) - https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html
+
+#springsecurity #multifactorauthentication #spring #security #java #tutorial
+
+00:00 Introduction
+03:50 Initializing Demo Project
+07:45 Enable App-level MFA
+10:11 AuthorizationManagerFactory
+13:00 Selective MFA
+17:20 Time-bound MFA
+25:48 Programmatic MFA
+32:55 User-level MFA Configuration
+37:32 Other configurations</media:description>
+   <media:community>
+    <media:starRating count="3" average="5.00" min="1" max="5"/>
+    <media:statistics views="137"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:89kqfnc_F-4</id>
+  <yt:videoId>89kqfnc_F-4</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>📒 Markdown Notes Project using Spring Boot and Flexmark - roadmap.sh  #spring #roadmap #markdown</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=89kqfnc_F-4"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-08-19T04:30:06+00:00</published>
+  <updated>2025-11-19T13:31:06+00:00</updated>
+  <media:group>
+   <media:title>📒 Markdown Notes Project using Spring Boot and Flexmark - roadmap.sh  #spring #roadmap #markdown</media:title>
+   <media:content url="https://www.youtube.com/v/89kqfnc_F-4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/89kqfnc_F-4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will create a project - Markdown Notes taking Application - which is listed on roadmap.sh website. We will start with an empty Spring Boot Project and will add the features to upload notes written markdown language, to list the uploaded notes and to render uploaded notes in html. In order to convert the markdown to HTML, we will use flexmark library. Please find the below resources:
+
+🧑‍💻 Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/markdown-notes
+📋 Project Requirements - https://roadmap.sh/projects/markdown-note-taking-app
+📁 How to upload files in Spring Boot - https://spring.io/guides/gs/uploading-files
+📝 flexmark-java - https://github.com/vsch/flexmark-java
+📄 commonmark javadoc (flexmark exposes / uses the same APIs) - https://www.javadoc.io/doc/org.commonmark/commonmark/latest/index.html
+🍵 flexmark-java maven repository - https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark/0.64.8
+
+
+#roadmap.sh #markdown #flexmark #commonmark #spring #springboot #java #project #proxy #api #html #notes</media:description>
+   <media:community>
+    <media:starRating count="3" average="5.00" min="1" max="5"/>
+    <media:statistics views="111"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:ja5evmFAGac</id>
+  <yt:videoId>ja5evmFAGac</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Caching Proxy Project using Spring Data Redis - roadmap.sh  #spring #redis #roadmap</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=ja5evmFAGac"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-07-10T04:30:34+00:00</published>
+  <updated>2025-08-09T14:28:54+00:00</updated>
+  <media:group>
+   <media:title>Caching Proxy Project using Spring Data Redis - roadmap.sh  #spring #redis #roadmap</media:title>
+   <media:content url="https://www.youtube.com/v/ja5evmFAGac?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/ja5evmFAGac/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will create a project - Caching Proxy - which is listed on roadmap.sh website. We will start with a simple proxy service without any caching, then we will implement caching using in memory map and then we will use Redis Cache to implement the caching proxy service. Please fine the below resources:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/caching-proxy
+Project Requirements - https://roadmap.sh/projects/caching-server
+Spring Data Redis - https://docs.spring.io/spring-data/redis/reference/
+JSONPlaceholder Website - https://jsonplaceholder.typicode.com/
+
+#roadmap.sh #cache #redis #spring #springboot #java #project #proxy #api #http #httpclient 
+
+00:00 What are we building
+02:58 Project Setup
+05:41 Build Direct Http Proxy
+25:33 InMemory Caching Proxy
+44:41 Redis Caching Proxy</media:description>
+   <media:community>
+    <media:starRating count="9" average="5.00" min="1" max="5"/>
+    <media:statistics views="169"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:80NCg9nFu-o</id>
+  <yt:videoId>80NCg9nFu-o</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Todo Management Project using Spring Security JdbcUserDetailsService - Store users and tokens in db</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=80NCg9nFu-o"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-06-09T04:30:04+00:00</published>
+  <updated>2025-07-07T14:09:00+00:00</updated>
+  <media:group>
+   <media:title>Todo Management Project using Spring Security JdbcUserDetailsService - Store users and tokens in db</media:title>
+   <media:content url="https://www.youtube.com/v/80NCg9nFu-o?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/80NCg9nFu-o/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will take a look at the architecture of Todo API project. We will learn how to create custom authentication filters in Spring project to authenticate the user using Bearer Token. We will also see how we can use Database to manage users using Spring Security Jdbc User Details Manager. Please find the resources below:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/todo-list-api
+Project Requirements - https://roadmap.sh/projects/todo-list-api
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Spring Security - https://spring.io/projects/spring-security
+JdbcUserDetailsManager - https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html
+
+#roadmap.sh #blog #spring #springboot #postgresqltutorial  #postgresql #java #project #fullstack #postgres #todos #security #spring-security #filter</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="43"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:At-ocEpNDFs</id>
+  <yt:videoId>At-ocEpNDFs</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Weather API Wrapper Project - #redis #roadmap #roadmapshprojects #spring #caching</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=At-ocEpNDFs"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-02-21T04:30:06+00:00</published>
+  <updated>2025-06-05T07:29:25+00:00</updated>
+  <media:group>
+   <media:title>Weather API Wrapper Project - #redis #roadmap #roadmapshprojects #spring #caching</media:title>
+   <media:content url="https://www.youtube.com/v/At-ocEpNDFs?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/At-ocEpNDFs/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will create the Weather API Wrapper project which is listed on roadmap.sh website. We will call external weather service to get weather forecast and will store that in cache (Redis Server). Please find the resources below:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/weather_api
+Project Requirements - https://roadmap.sh/projects/weather-api-wrapper-service
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Redis - https://redis.io/
+Redis image at Dockerhub - https://hub.docker.com/_/redis
+Spring Data Redis - https://spring.io/projects/spring-data-redis
+RestClient in Spring - https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="6" average="5.00" min="1" max="5"/>
+    <media:statistics views="237"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:mW9EFjxS-jY</id>
+  <yt:videoId>mW9EFjxS-jY</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Delete article feature - #roadmap #roadmapsh projects #spring #thymeleaf</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=mW9EFjxS-jY"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-28T04:30:20+00:00</published>
+  <updated>2025-06-12T06:36:49+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Delete article feature - #roadmap #roadmapsh projects #spring #thymeleaf</media:title>
+   <media:content url="https://www.youtube.com/v/mW9EFjxS-jY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/mW9EFjxS-jY/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will implement the feature to delete existing articles. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="63"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:hf0vXE_oXA8</id>
+  <yt:videoId>hf0vXE_oXA8</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Edit article feature - #roadmap #roadmapsh projects #spring #thymeleaf</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=hf0vXE_oXA8"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-20T04:30:19+00:00</published>
+  <updated>2025-06-05T07:07:32+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Edit article feature - #roadmap #roadmapsh projects #spring #thymeleaf</media:title>
+   <media:content url="https://www.youtube.com/v/hf0vXE_oXA8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/hf0vXE_oXA8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will implement the feature to edit existing articles. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="67"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:DkdLnQrbyNU</id>
+  <yt:videoId>DkdLnQrbyNU</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Create new article feature - #roadmap #roadmapsh projects #spring #thymeleaf</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=DkdLnQrbyNU"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-14T04:30:10+00:00</published>
+  <updated>2025-06-06T04:25:41+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Create new article feature - #roadmap #roadmapsh projects #spring #thymeleaf</media:title>
+   <media:content url="https://www.youtube.com/v/DkdLnQrbyNU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/DkdLnQrbyNU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will implement the feature to create new article. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="76"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:jsXUDQB76rA</id>
+  <yt:videoId>jsXUDQB76rA</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Displaying admin page- #roadmap #roadmapsh projects #spring #thymeleaf</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=jsXUDQB76rA"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-13T04:30:18+00:00</published>
+  <updated>2025-06-08T12:53:27+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Displaying admin page- #roadmap #roadmapsh projects #spring #thymeleaf</media:title>
+   <media:content url="https://www.youtube.com/v/jsXUDQB76rA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/jsXUDQB76rA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will create admin and will make sure only admin can access this page using Spring Security. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="1" average="5.00" min="1" max="5"/>
+    <media:statistics views="46"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:pLkqG-6hs-k</id>
+  <yt:videoId>pLkqG-6hs-k</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Displaying single article - #roadmap #roadmapsh projects #spring #thymeleaf</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=pLkqG-6hs-k"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-10T04:30:23+00:00</published>
+  <updated>2025-06-08T21:40:05+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Displaying single article - #roadmap #roadmapsh projects #spring #thymeleaf</media:title>
+   <media:content url="https://www.youtube.com/v/pLkqG-6hs-k?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/pLkqG-6hs-k/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will display a single article to the user. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="49"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:KYkveXyAFZo</id>
+  <yt:videoId>KYkveXyAFZo</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - Displaying list of articles - #roadmap #roadmapsh projects</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=KYkveXyAFZo"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-08T04:30:15+00:00</published>
+  <updated>2025-06-14T12:19:56+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - Displaying list of articles - #roadmap #roadmapsh projects</media:title>
+   <media:content url="https://www.youtube.com/v/KYkveXyAFZo?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/KYkveXyAFZo/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we will display the list of articles to the user. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="37"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:5ZMioGGbxTA</id>
+  <yt:videoId>5ZMioGGbxTA</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project - 2 - TTCLI - Spring Boot + Thymeleaf + Postgres + Tailwind CSS (Node + NPM)</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=5ZMioGGbxTA"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-04T04:30:04+00:00</published>
+  <updated>2025-06-12T15:28:53+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project - 2 - TTCLI - Spring Boot + Thymeleaf + Postgres + Tailwind CSS (Node + NPM)</media:title>
+   <media:content url="https://www.youtube.com/v/5ZMioGGbxTA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/5ZMioGGbxTA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we create Entity, Repository and Service to store Articles into the database for the Personal Blog Project. We then create a class to Initialize the database using fake article titles and content. We use flyway migration tool to create database table and then we create some dummy articles. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+Java Faker - https://github.com/DiUS/java-faker
+Flyway - https://www.red-gate.com/products/flyway/community/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="0" average="0.00" min="1" max="5"/>
+    <media:statistics views="145"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:1fuH2bMvyWw</id>
+  <yt:videoId>1fuH2bMvyWw</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>Personal Blog Project Setup - TTCLI - Spring Boot + Thymeleaf + Postgres + Tailwind CSS (Node + NPM)</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=1fuH2bMvyWw"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2025-01-03T04:30:00+00:00</published>
+  <updated>2025-06-05T12:39:27+00:00</updated>
+  <media:group>
+   <media:title>Personal Blog Project Setup - TTCLI - Spring Boot + Thymeleaf + Postgres + Tailwind CSS (Node + NPM)</media:title>
+   <media:content url="https://www.youtube.com/v/1fuH2bMvyWw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/1fuH2bMvyWw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In this video, we setup the Personal Blog Project using TTCLI tool. We will use Spring Boot, Thymeleaf, Postgres Database, Tailwind CSS in this project. Please find below useful links:
+
+Github Repository - https://github.com/himanshu-pareek/roadmapsh-backend-projects/tree/main/personal-blog
+Project Requirements - https://roadmap.sh/projects/personal-blog
+TTCLI - https://github.com/wimdeblauwe/ttcli
+Spring Boot - https://docs.spring.io/spring-boot/index.html
+Thymeleaf - https://www.thymeleaf.org/
+Postgres Database - https://www.postgresql.org/
+Tailwind CSS - https://tailwindcss.com/
+
+#roadmap.sh #blog #spring #springboot #thymeleaf #postgres #postgresql #tailwindcss #tailwind #java #html #css #javascript #ttcli #project #fullstack</media:description>
+   <media:community>
+    <media:starRating count="2" average="5.00" min="1" max="5"/>
+    <media:statistics views="318"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:F6ujDwrFIZk</id>
+  <yt:videoId>F6ujDwrFIZk</yt:videoId>
+  <yt:channelId>UCNhH5zc8-_Hc7aE-wH7lM-g</yt:channelId>
+  <title>🚢 Containerize Your Spring Boot App 🍃 with Buildpacks | No Dockerfile Needed! 🤔</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=F6ujDwrFIZk"/>
+  <author>
+   <name>Java Rush</name>
+   <uri>https://www.youtube.com/channel/UCNhH5zc8-_Hc7aE-wH7lM-g</uri>
+  </author>
+  <published>2024-09-24T04:30:14+00:00</published>
+  <updated>2025-06-05T22:38:14+00:00</updated>
+  <media:group>
+   <media:title>🚢 Containerize Your Spring Boot App 🍃 with Buildpacks | No Dockerfile Needed! 🤔</media:title>
+   <media:content url="https://www.youtube.com/v/F6ujDwrFIZk?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/F6ujDwrFIZk/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Learn how to effortlessly create a Docker image for your Spring Boot application using Buildpacks — no Dockerfile required! In this step-by-step tutorial, we dive into the power of Buildpacks to simplify the containerization process for your Spring Boot applications. You'll also discover how Spring Boot automatically optimizes your Docker images using layered JARs, allowing for efficient caching and faster builds.
+
+📌 Topics covered:
+Understanding layered Docker images and layered JAR for optimal performance
+Creating a Docker image for a Spring Boot app using Buildpacks without a Dockerfile
+Best practices for Dockerizing Spring Boot applications
+Update gradle / maven build system to configure creation of Docker image
+By the end of this video, you'll have a fully containerized Spring Boot app with a lightweight, layered Docker image—ready for seamless deployment and quick updates!
+
+Resources:
+Blogs:
+    https://blog.javarush.dev/creating-docker-image-of-spring-boot-application-using-buildpacks
+
+    https://dev.to/himanshu-pareek/creating-docker-image-of-spring-boot-application-using-buildpacks-5dbo
+
+Buildpacks: https://buildpacks.io/
+Container Images - Spring Boot: https://docs.spring.io/spring-boot/reference/packaging/container-images/index.html
+
+#spring #springboot #docker #buildpacks #gradle #maven #tutorial #coding #springboottutorial #container #layeredjar #layeredimage</media:description>
+   <media:community>
+    <media:starRating count="4" average="5.00" min="1" max="5"/>
+    <media:statistics views="320"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>
