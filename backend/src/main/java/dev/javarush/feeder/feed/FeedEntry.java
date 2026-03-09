@@ -1,7 +1,7 @@
 package dev.javarush.feeder.feed;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.List;
 
 public class FeedEntry {
 
@@ -11,12 +11,12 @@ public class FeedEntry {
     private String description;
     private LocalDateTime publishedDate;
     private LocalDateTime updatedDate;
-    private Collection<Person> authors;
-    private Collection<String> categories;
+    private List<Person> authors;
+    private List<String> categories;
     private String comments;
-    private Collection<Content> contents;
-    private Collection<Person> contributors;
-    private Collection<Enclosure> enclosures;
+    private List<Content> contents;
+    private List<Person> contributors;
+    private List<Enclosure> enclosures;
 
     public FeedEntry(String title, String link) {
         this.title = title;
@@ -71,19 +71,19 @@ public class FeedEntry {
         this.updatedDate = updatedDate;
     }
 
-    public Collection<Person> getAuthors() {
+    public List<Person> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Collection<Person> authors) {
+    public void setAuthors(List<Person> authors) {
         this.authors = authors;
     }
 
-    public Collection<String> getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 
-    public void setCategories(Collection<String> categories) {
+    public void setCategories(List<String> categories) {
         this.categories = categories;
     }
 
@@ -95,27 +95,27 @@ public class FeedEntry {
         this.comments = comments;
     }
 
-    public Collection<Content> getContents() {
+    public List<Content> getContents() {
         return contents;
     }
 
-    public void setContents(Collection<Content> contents) {
+    public void setContents(List<Content> contents) {
         this.contents = contents;
     }
 
-    public Collection<Person> getContributors() {
+    public List<Person> getContributors() {
         return contributors;
     }
 
-    public void setContributors(Collection<Person> contributors) {
+    public void setContributors(List<Person> contributors) {
         this.contributors = contributors;
     }
 
-    public Collection<Enclosure> getEnclosures() {
+    public List<Enclosure> getEnclosures() {
         return enclosures;
     }
 
-    public void setEnclosures(Collection<Enclosure> enclosures) {
+    public void setEnclosures(List<Enclosure> enclosures) {
         this.enclosures = enclosures;
     }
 

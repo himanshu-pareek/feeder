@@ -1,7 +1,7 @@
 package dev.javarush.feeder.feed;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.List;
 
 public class Feed {
 
@@ -10,9 +10,10 @@ public class Feed {
     private String link;
     private String description;
     private LocalDateTime publishedDate;
-    private Collection<String> authors;
+    private LocalDateTime updatedDate;
+    private List<String> authors;
     private String copyright;
-    private Collection<FeedEntry> entries;
+    private List<FeedEntry> entries;
     private String language;
     private String feedType;
     private String managingEditor;
@@ -65,11 +66,19 @@ public class Feed {
         this.publishedDate = publishedDate;
     }
 
-    public Collection<String> getAuthors() {
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public List<String> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Collection<String> authors) {
+    public void setAuthors(List<String> authors) {
         this.authors = authors;
     }
 
@@ -81,11 +90,11 @@ public class Feed {
         this.copyright = copyright;
     }
 
-    public Collection<FeedEntry> getEntries() {
+    public List<FeedEntry> getEntries() {
         return entries;
     }
 
-    public void setEntries(Collection<FeedEntry> entries) {
+    public void setEntries(List<FeedEntry> entries) {
         this.entries = entries;
     }
 
@@ -129,6 +138,7 @@ public class Feed {
             ", link='" + link + '\'' +
             ", description='" + description + '\'' +
             ", publishedDate=" + publishedDate +
+            ", updatedDate=" + updatedDate +
             ", authors=" + authors +
             ", copyright='" + copyright + '\'' +
             ", entries=" + entries +

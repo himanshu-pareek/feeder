@@ -14,6 +14,7 @@ import dev.javarush.feeder.feed.Person;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public class SyndFeedToFeed {
     public static Feed convert(SyndFeed source) {
         Feed feed = new Feed(source.getTitle(), source.getLink(), source.getDescription());
         feed.setUri(source.getUri());
-        feed.setPublishedDate(toLocalDateTime(source.getPublishedDate()));
+        feed.setPublishedDate(toUTCDate(source.getPublishedDate()));
         if (source.getAuthors() != null) {
             feed.setAuthors(source.getAuthors().stream()
                 .map(SyndPerson::getName)
@@ -42,11 +43,11 @@ public class SyndFeedToFeed {
         return feed;
     }
 
-    private static LocalDateTime toLocalDateTime(Date date) {
+    private static LocalDateTime toUTCDate(Date date) {
         if (date == null) {
             return null;
         }
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        return date.toInstant().atZone(ZoneId.of("UTC")).toLocalDateTime();
     }
 
     private static class SyndEntryToFeedEntry {
@@ -56,8 +57,8 @@ public class SyndFeedToFeed {
             if (syndEntry.getDescription() != null) {
                 feedEntry.setDescription(syndEntry.getDescription().getValue());
             }
-            feedEntry.setPublishedDate(toLocalDateTime(syndEntry.getPublishedDate()));
-            feedEntry.setUpdatedDate(toLocalDateTime(syndEntry.getUpdatedDate()));
+            feedEntry.setPublishedDate(toUTCDate(syndEntry.getPublishedDate()));
+            feedEntry.setUpdatedDate(toUTCDate(syndEntry.getUpdatedDate()));
             feedEntry.setAuthors(convertPersons(syndEntry.getAuthors()));
             feedEntry.setContributors(convertPersons(syndEntry.getContributors()));
             feedEntry.setContents(convertContents(syndEntry.getContents()));
