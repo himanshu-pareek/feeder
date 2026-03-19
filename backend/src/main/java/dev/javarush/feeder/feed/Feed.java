@@ -1,16 +1,16 @@
 package dev.javarush.feeder.feed;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Feed {
 
-    private String uri;
-    private String title;
-    private String link;
-    private String description;
+    private URI uri;
+    private final String title;
+    private final String link;
+    private final String description;
     private LocalDateTime publishedDate;
-    private LocalDateTime updatedDate;
     private List<String> authors;
     private String copyright;
     private List<FeedEntry> entries;
@@ -20,17 +20,33 @@ public class Feed {
     private String webMaster;
 
 
-    public Feed(String title, String link, String description) {
+    public Feed(URI uri, String title, String link, String description) {
+        this.uri = uri;
         this.title = title;
         this.link = link;
         this.description = description;
     }
 
-    public String getUri() {
+    public Feed(Feed other) {
+        this.uri = other.uri;
+        this.title = other.title;
+        this.link = other.link;
+        this.description = other.description;
+        this.publishedDate = other.publishedDate;
+        this.authors = other.authors != null ? List.copyOf(other.authors) : null;
+        this.copyright = other.copyright;
+        this.entries = other.entries != null ? List.copyOf(other.entries) : null;
+        this.language = other.language;
+        this.feedType = other.feedType;
+        this.managingEditor = other.managingEditor;
+        this.webMaster = other.webMaster;
+    }
+
+    public URI getUri() {
         return uri;
     }
 
-    public void setUri(String uri) {
+    public void setUri(URI uri) {
         this.uri = uri;
     }
 
@@ -38,24 +54,12 @@ public class Feed {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDateTime getPublishedDate() {
@@ -64,14 +68,6 @@ public class Feed {
 
     public void setPublishedDate(LocalDateTime publishedDate) {
         this.publishedDate = publishedDate;
-    }
-
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
     }
 
     public List<String> getAuthors() {
@@ -138,7 +134,6 @@ public class Feed {
             ", link='" + link + '\'' +
             ", description='" + description + '\'' +
             ", publishedDate=" + publishedDate +
-            ", updatedDate=" + updatedDate +
             ", authors=" + authors +
             ", copyright='" + copyright + '\'' +
             ", entries=" + entries +

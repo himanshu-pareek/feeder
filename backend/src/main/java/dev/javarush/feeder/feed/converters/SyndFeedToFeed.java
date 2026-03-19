@@ -12,6 +12,7 @@ import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedEntry;
 import dev.javarush.feeder.feed.Person;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -22,8 +23,7 @@ import java.util.stream.Collectors;
 
 public class SyndFeedToFeed {
     public static Feed convert(SyndFeed source) {
-        Feed feed = new Feed(source.getTitle(), source.getLink(), source.getDescription());
-        feed.setUri(source.getUri());
+        Feed feed = new Feed(source.getUri() != null ? URI.create(source.getUri()) : null, source.getTitle(), source.getLink(), source.getDescription());
         feed.setPublishedDate(toUTCDate(source.getPublishedDate()));
         if (source.getAuthors() != null) {
             feed.setAuthors(source.getAuthors().stream()
@@ -52,24 +52,31 @@ public class SyndFeedToFeed {
 
     private static class SyndEntryToFeedEntry {
         static FeedEntry convert(SyndEntry syndEntry) {
-            FeedEntry feedEntry = new FeedEntry(syndEntry.getTitle(), syndEntry.getLink());
-            feedEntry.setUri(syndEntry.getUri());
+            FeedEntry.Builder builder = FeedEntry.builder()
+                .title(syndEntry.getTitle())
+                .link(syndEntry.getLink())
+                .uri(syndEntry.getUri());
+
             if (syndEntry.getDescription() != null) {
-                feedEntry.setDescription(syndEntry.getDescription().getValue());
+                builder = builder.description(syndEntry.getDescription().getValue());
             }
-            feedEntry.setPublishedDate(toUTCDate(syndEntry.getPublishedDate()));
-            feedEntry.setUpdatedDate(toUTCDate(syndEntry.getUpdatedDate()));
-            feedEntry.setAuthors(convertPersons(syndEntry.getAuthors()));
-            feedEntry.setContributors(convertPersons(syndEntry.getContributors()));
-            feedEntry.setContents(convertContents(syndEntry.getContents()));
-            feedEntry.setEnclosures(convertEnclosures(syndEntry.getEnclosures()));
+
+            builder = builder.publishedDate(toUTCDate(syndEntry.getPublishedDate()))
+                .updatedDate(toUTCDate(syndEntry.getUpdatedDate()))
+                .authors(convertPersons(syndEntry.getAuthors()))
+                .contributors(convertPersons(syndEntry.getContributors()))
+                .contents(convertContents(syndEntry.getContents()))
+                .enclosures(convertEnclosures(syndEntry.getEnclosures()));
+
             if (syndEntry.getCategories() != null) {
-                feedEntry.setCategories(syndEntry.getCategories().stream()
+                builder = builder.categories(syndEntry.getCategories().stream()
                     .map(SyndCategory::getName)
                     .collect(Collectors.toList()));
             }
-            feedEntry.setComments(syndEntry.getComments());
-            return feedEntry;
+
+            builder = builder.comments(syndEntry.getComments());
+
+            return builder.build();
         }
 
         private static List<Content> convertContents(List<SyndContent> syndContents) {

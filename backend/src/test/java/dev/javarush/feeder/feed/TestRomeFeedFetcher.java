@@ -41,16 +41,16 @@ public class TestRomeFeedFetcher {
     assertEquals(5, feed.getEntries().size());
 
     FeedEntry item1 = feed.getEntries().getFirst();
-    assertEquals("Louisiana Students to Hear from NASA Astronauts Aboard Space Station", item1.getTitle());
-    assertEquals("http://www.nasa.gov/press-release/louisiana-students-to-hear-from-nasa-astronauts-aboard-space-station", item1.getLink());
-    assertEquals("As part of the state's first Earth-to-space call, students from Louisiana will have an opportunity soon to hear from NASA astronauts aboard the International Space Station.", item1.getDescription());
-    assertEquals(LocalDateTime.of(2023, 7, 21, 13, 4, 0), item1.getPublishedDate());
+    assertEquals("Louisiana Students to Hear from NASA Astronauts Aboard Space Station", item1.title());
+    assertEquals("http://www.nasa.gov/press-release/louisiana-students-to-hear-from-nasa-astronauts-aboard-space-station", item1.link());
+    assertEquals("As part of the state's first Earth-to-space call, students from Louisiana will have an opportunity soon to hear from NASA astronauts aboard the International Space Station.", item1.description());
+    assertEquals(LocalDateTime.of(2023, 7, 21, 13, 4, 0), item1.publishedDate());
 
     FeedEntry item2 = feed.getEntries().get(1);
-    assertNull(item2.getTitle());
-    assertEquals("http://www.nasa.gov/press-release/nasa-awards-integrated-mission-operations-contract-iii", item2.getLink());
-    assertEquals("NASA has selected KBR Wyle Services, LLC, of Fulton, Maryland, to provide mission and flight crew operations support for the International Space Station and future human space exploration.", item2.getDescription());
-    assertEquals(LocalDateTime.of(2023, 7, 20, 19, 5, 0), item2.getPublishedDate());
+    assertNull(item2.title());
+    assertEquals("http://www.nasa.gov/press-release/nasa-awards-integrated-mission-operations-contract-iii", item2.link());
+    assertEquals("NASA has selected KBR Wyle Services, LLC, of Fulton, Maryland, to provide mission and flight crew operations support for the International Space Station and future human space exploration.", item2.description());
+    assertEquals(LocalDateTime.of(2023, 7, 20, 19, 5, 0), item2.publishedDate());
   }
 
   @Test
@@ -72,10 +72,10 @@ public class TestRomeFeedFetcher {
     assertEquals(6, feed.getEntries().size());
 
     FeedEntry item1 = feed.getEntries().getFirst();
-    assertEquals("Giving the world a pluggable Gnutella", item1.getTitle());
-    assertEquals("http://writetheweb.com/read.php?item=24", item1.getLink());
-    assertEquals("WorldOS is a framework on which to build programs that work like Freenet or Gnutella -allowing distributed applications using peer-to-peer routing.", item1.getDescription());
-    assertNull(item1.getPublishedDate());
+    assertEquals("Giving the world a pluggable Gnutella", item1.title());
+    assertEquals("http://writetheweb.com/read.php?item=24", item1.link());
+    assertEquals("WorldOS is a framework on which to build programs that work like Freenet or Gnutella -allowing distributed applications using peer-to-peer routing.", item1.description());
+    assertNull(item1.publishedDate());
   }
 
   @Test
@@ -97,14 +97,14 @@ public class TestRomeFeedFetcher {
     assertFalse(feed.getEntries().isEmpty());
 
     FeedEntry item1 = feed.getEntries().getFirst();
-    assertEquals("#644 - Bryan Johnson", item1.getTitle());
-    assertNull(item1.getLink());
-    assertTrue(item1.getDescription().startsWith("Bryan Johnson is an entrepreneur and longevity expert known for extensively"));
-    assertEquals(LocalDateTime.of(2026, 3, 5, 17, 16, 0), item1.getPublishedDate());
-    assertEquals(List.of(), item1.getAuthors().stream().map(Person::name).collect(Collectors.toList()));
-    assertEquals(List.of(), item1.getCategories());
-    assertEquals(1, item1.getEnclosures().size());
-    Enclosure enclosure = item1.getEnclosures().getFirst();
+    assertEquals("#644 - Bryan Johnson", item1.title());
+    assertNull(item1.link());
+    assertTrue(item1.description().startsWith("Bryan Johnson is an entrepreneur and longevity expert known for extensively"));
+    assertEquals(LocalDateTime.of(2026, 3, 5, 17, 16, 0), item1.publishedDate());
+    assertEquals(List.of(), item1.authors().stream().map(Person::name).collect(Collectors.toList()));
+    assertEquals(List.of(), item1.categories());
+    assertEquals(1, item1.enclosures().size());
+    Enclosure enclosure = item1.enclosures().getFirst();
     assertEquals("https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/mgln.ai/e/94/claritaspod.com/measure/verifi.podscribe.com/rss/p/pfx.vpixl.com/j0JIg/traffic.megaphone.fm/ROOSTER1430439505.mp3?updated=1772731159", enclosure.url());
     assertEquals("audio/mpeg", enclosure.type());
     assertEquals(0, enclosure.length());
@@ -124,11 +124,11 @@ public class TestRomeFeedFetcher {
     assertFalse(feed.getEntries().isEmpty());
 
     FeedEntry item1 = feed.getEntries().getFirst();
-    assertEquals("Serve Single Page Applications using Spring Boot - React, Vue, anything #react #vuejs #spring #java", item1.getTitle());
-    assertEquals("https://www.youtube.com/watch?v=1suDMh2sy_M", item1.getLink());
-    assertEquals(LocalDateTime.of(2026, 1, 27, 4, 30, 3), item1.getPublishedDate());
-    assertEquals(LocalDateTime.of(2026, 2, 24, 15, 39, 6), item1.getUpdatedDate());
-    assertEquals(List.of("Java Rush"), item1.getAuthors().stream().map(Person::name).collect(Collectors.toList()));
+    assertEquals("Serve Single Page Applications using Spring Boot - React, Vue, anything #react #vuejs #spring #java", item1.title());
+    assertEquals("https://www.youtube.com/watch?v=1suDMh2sy_M", item1.link());
+    assertEquals(LocalDateTime.of(2026, 1, 27, 4, 30, 3), item1.publishedDate());
+    assertEquals(LocalDateTime.of(2026, 2, 24, 15, 39, 6), item1.updatedDate());
+    assertEquals(List.of("Java Rush"), item1.authors().stream().map(Person::name).collect(Collectors.toList()));
   }
 
   private URI getResourceUri(String fileLocation) throws URISyntaxException {

@@ -25,7 +25,9 @@ public class RomeFeedFetcher implements FeedFetcher{
       ) {
         SyndFeedInput syndFeedInput = new SyndFeedInput();
         SyndFeed syndFeed = syndFeedInput.build(reader);
-        return SyndFeedToFeed.convert(syndFeed);
+        var feed = SyndFeedToFeed.convert(syndFeed);
+        feed.setUri(uri);
+        return feed;
       }
     } catch (IOException e) {
       throw new FeedFetchException("Error while fetching feed " + e.getLocalizedMessage(), e);

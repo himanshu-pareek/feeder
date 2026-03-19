@@ -1,139 +1,115 @@
 package dev.javarush.feeder.feed;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class FeedEntry {
-
-    private String uri;
-    private String title;
-    private String link;
-    private String description;
-    private LocalDateTime publishedDate;
-    private LocalDateTime updatedDate;
-    private List<Person> authors;
-    private List<String> categories;
-    private String comments;
-    private List<Content> contents;
-    private List<Person> contributors;
-    private List<Enclosure> enclosures;
-
-    public FeedEntry(String title, String link) {
-        this.title = title;
-        this.link = link;
+public record FeedEntry(
+    String uri,
+    String title,
+    String link,
+    String description,
+    LocalDateTime publishedDate,
+    LocalDateTime updatedDate,
+    List<Person> authors,
+    List<String> categories,
+    String comments,
+    List<Content> contents,
+    List<Person> contributors,
+    List<Enclosure> enclosures
+) {
+    public FeedEntry {
+        authors = authors != null ? List.copyOf(authors) : Collections.emptyList();
+        categories = categories != null ? List.copyOf(categories) : Collections.emptyList();
+        contents = contents != null ? List.copyOf(contents) : Collections.emptyList();
+        contributors = contributors != null ? List.copyOf(contributors) : Collections.emptyList();
+        enclosures = enclosures != null ? List.copyOf(enclosures) : Collections.emptyList();
     }
 
-    public String getUri() {
-        return uri;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
+    public static class Builder {
+        private String uri;
+        private String title;
+        private String link;
+        private String description;
+        private LocalDateTime publishedDate;
+        private LocalDateTime updatedDate;
+        private List<Person> authors = new ArrayList<>();
+        private List<String> categories = new ArrayList<>();
+        private String comments;
+        private List<Content> contents = new ArrayList<>();
+        private List<Person> contributors = new ArrayList<>();
+        private List<Enclosure> enclosures = new ArrayList<>();
 
-    public String getTitle() {
-        return title;
-    }
+        public Builder uri(String uri) {
+            this.uri = uri;
+            return this;
+        }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
 
-    public String getLink() {
-        return link;
-    }
+        public Builder link(String link) {
+            this.link = link;
+            return this;
+        }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public Builder publishedDate(LocalDateTime publishedDate) {
+            this.publishedDate = publishedDate;
+            return this;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public Builder updatedDate(LocalDateTime updatedDate) {
+            this.updatedDate = updatedDate;
+            return this;
+        }
 
-    public LocalDateTime getPublishedDate() {
-        return publishedDate;
-    }
+        public Builder authors(List<Person> authors) {
+            this.authors = new ArrayList<>(authors);
+            return this;
+        }
 
-    public void setPublishedDate(LocalDateTime publishedDate) {
-        this.publishedDate = publishedDate;
-    }
+        public Builder categories(List<String> categories) {
+            this.categories = new ArrayList<>(categories);
+            return this;
+        }
 
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
-    }
+        public Builder comments(String comments) {
+            this.comments = comments;
+            return this;
+        }
 
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
+        public Builder contents(List<Content> contents) {
+            this.contents = new ArrayList<>(contents);
+            return this;
+        }
 
-    public List<Person> getAuthors() {
-        return authors;
-    }
+        public Builder contributors(List<Person> contributors) {
+            this.contributors = new ArrayList<>(contributors);
+            return this;
+        }
 
-    public void setAuthors(List<Person> authors) {
-        this.authors = authors;
-    }
+        public Builder enclosures(List<Enclosure> enclosures) {
+            this.enclosures = new ArrayList<>(enclosures);
+            return this;
+        }
 
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public List<Content> getContents() {
-        return contents;
-    }
-
-    public void setContents(List<Content> contents) {
-        this.contents = contents;
-    }
-
-    public List<Person> getContributors() {
-        return contributors;
-    }
-
-    public void setContributors(List<Person> contributors) {
-        this.contributors = contributors;
-    }
-
-    public List<Enclosure> getEnclosures() {
-        return enclosures;
-    }
-
-    public void setEnclosures(List<Enclosure> enclosures) {
-        this.enclosures = enclosures;
-    }
-
-    @Override
-    public String toString() {
-        return "FeedEntry{" +
-            "uri='" + uri + '\'' +
-            ", title='" + title + '\'' +
-            ", link='" + link + '\'' +
-            ", description='" + description + '\'' +
-            ", publishedDate=" + publishedDate +
-            ", updatedDate=" + updatedDate +
-            ", authors=" + authors +
-            ", categories=" + categories +
-            ", comments='" + comments + '\'' +
-            ", contents=" + contents +
-            ", contributors=" + contributors +
-            ", enclosures=" + enclosures +
-            '}';
+        public FeedEntry build() {
+            return new FeedEntry(
+                uri, title, link, description, publishedDate, updatedDate,
+                authors, categories, comments, contents, contributors, enclosures
+            );
+        }
     }
 }
