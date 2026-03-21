@@ -15,7 +15,7 @@ public record FeedEntry(
     List<Person> authors,
     List<String> categories,
     String comments,
-    List<Content> contents,
+    List<FeedEntryContent> contents,
     List<Person> contributors,
     List<Enclosure> enclosures
 ) {
@@ -41,7 +41,7 @@ public record FeedEntry(
         private List<Person> authors = new ArrayList<>();
         private List<String> categories = new ArrayList<>();
         private String comments;
-        private List<Content> contents = new ArrayList<>();
+        private List<FeedEntryContent> contents = new ArrayList<>();
         private List<Person> contributors = new ArrayList<>();
         private List<Enclosure> enclosures = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public record FeedEntry(
             return this;
         }
 
-        public Builder contents(List<Content> contents) {
+        public Builder contents(List<FeedEntryContent> contents) {
             this.contents = new ArrayList<>(contents);
             return this;
         }

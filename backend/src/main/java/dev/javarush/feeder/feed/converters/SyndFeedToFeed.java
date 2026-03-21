@@ -6,7 +6,7 @@ import com.rometools.rome.feed.synd.SyndEnclosure;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndPerson;
-import dev.javarush.feeder.feed.Content;
+import dev.javarush.feeder.feed.FeedEntryContent;
 import dev.javarush.feeder.feed.Enclosure;
 import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedEntry;
@@ -15,7 +15,6 @@ import dev.javarush.feeder.feed.Person;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -79,12 +78,12 @@ public class SyndFeedToFeed {
             return builder.build();
         }
 
-        private static List<Content> convertContents(List<SyndContent> syndContents) {
+        private static List<FeedEntryContent> convertContents(List<SyndContent> syndContents) {
             if (syndContents == null) {
                 return Collections.emptyList();
             }
             return syndContents.stream()
-                .map(c -> new Content(c.getType(), c.getValue()))
+                .map(c -> new FeedEntryContent(c.getType(), c.getValue()))
                 .collect(Collectors.toList());
         }
 
