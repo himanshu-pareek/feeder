@@ -38,7 +38,15 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "dev.javarush.feeder.App"
+}
+
+tasks.register<JavaExec>("cli") {
+    group = "application"
+    description = "Runs the Feeder CLI application with interactive input."
+    mainClass = "dev.javarush.feeder.cli.FeederApp"
+    classpath = sourceSets["main"].runtimeClasspath
+    standardInput = System.`in`
 }
 
 tasks.named<Test>("test") {
