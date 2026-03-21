@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class InMemoryFeedRepository implements FeedRepository{
   private final Map<URI, Feed> feeds;
 
-  InMemoryFeedRepository() {
+  public InMemoryFeedRepository() {
     this.feeds = new ConcurrentHashMap<>();
   }
 
