@@ -8,13 +8,11 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
  * Aggregate Root representing user-specific state and a copy of a feed entry.
  */
 public class UserFeedEntry {
-    private final String id;
     private final String userId;
     private final URI feedUri;
     private final URI feedEntryUri;
@@ -32,7 +30,6 @@ public class UserFeedEntry {
     private boolean read;
 
     public UserFeedEntry(String userId, URI feedUri, FeedEntry feedEntry) {
-        this.id = UUID.randomUUID().toString();
         this.userId = Objects.requireNonNull(userId);
         this.feedUri = Objects.requireNonNull(feedUri);
         this.feedEntryUri = URI.create(feedEntry.uri());
@@ -48,10 +45,6 @@ public class UserFeedEntry {
         this.contributors = List.copyOf(feedEntry.contributors());
         this.enclosures = List.copyOf(feedEntry.enclosures());
         this.read = false;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getUserId() {
@@ -127,11 +120,13 @@ public class UserFeedEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserFeedEntry that = (UserFeedEntry) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(userId, that.userId) &&
+               Objects.equals(feedUri, that.feedUri) &&
+               Objects.equals(feedEntryUri, that.feedEntryUri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(userId, feedUri, feedEntryUri);
     }
 }

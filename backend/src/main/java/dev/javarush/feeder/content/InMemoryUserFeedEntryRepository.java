@@ -7,11 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class InMemoryUserFeedEntryRepository implements UserFeedEntryRepository {
-    private final Map<String, UserFeedEntry> entries = new ConcurrentHashMap<>();
+    private final Map<EntryKey, UserFeedEntry> entries = new ConcurrentHashMap<>();
 
     @Override
     public void save(UserFeedEntry entry) {
-        entries.put(entry.getId(), entry);
+        EntryKey key = new EntryKey(entry.getUserId(), entry.getFeedUri(), entry.getFeedEntryUri());
+        entries.put(key, entry);
     }
 
     @Override
@@ -20,8 +21,8 @@ public class InMemoryUserFeedEntryRepository implements UserFeedEntryRepository 
     }
 
     @Override
-    public Optional<UserFeedEntry> findById(String id) {
-        return Optional.ofNullable(entries.get(id));
+    public Optional<UserFeedEntry> findByKey(EntryKey key) {
+        return Optional.ofNullable(entries.get(key));
     }
 
     @Override

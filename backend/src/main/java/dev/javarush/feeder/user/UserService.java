@@ -1,30 +1,28 @@
 package dev.javarush.feeder.user;
 
-import dev.javarush.feeder.content.UserFeedEntry;
-import dev.javarush.feeder.content.UserFeedEntryRepository;
+import com.google.common.eventbus.EventBus;
 import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedService;
+import dev.javarush.feeder.user.events.UserSubscribedEvent;
 import java.net.URI;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class UserService {
 
     private final UserRepository userRepository;
     private final FeedService feedService;
-    private final UserFeedEntryRepository userFeedEntryRepository;
+    private final EventBus eventBus;
 
     public UserService(UserRepository userRepository,
                        FeedService feedService,
-                       UserFeedEntryRepository userFeedEntryRepository) {
+                       EventBus eventBus) {
         this.userRepository = Objects.requireNonNull(userRepository);
         this.feedService = Objects.requireNonNull(feedService);
-        this.userFeedEntryRepository = Objects.requireNonNull(userFeedEntryRepository);
+        this.eventBus = Objects.requireNonNull(eventBus);
     }
 
     /**
-     * Subscribes a user to a feed and creates UserFeedEntry for existing items.
+     * Subscribes a user to a feed and publishes UserSubscribedEvent.
      */
     public void subscribe(String userId, URI feedUri) {
         User user = userRepository.findById(userId)
@@ -38,20 +36,7 @@ public class UserService {
 
         if (user.subscribeTo(feedUri)) {
             userRepository.save(user);
-            createEntriesForUser(userId, feed);
-        }
-    }
-
-    /**
-     * Creates user-specific content for each entry in the feed.
-     * This logic can be reused during feed synchronization.
-     */
-    public void createEntriesForUser(String userId, Feed feed) {
-        if (feed.getEntries() != null) {
-            List<UserFeedEntry> userEntries = feed.getEntries().stream()
-                .map(entry -> new UserFeedEntry(userId, feed.getUri(), entry))
-                .collect(Collectors.toList());
-            userFeedEntryRepository.saveAll(userEntries);
+            eventBus.post(new UserSubscribedEvent(userId, feed));
         }
     }
 }

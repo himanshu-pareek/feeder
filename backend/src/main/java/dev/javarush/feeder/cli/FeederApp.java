@@ -1,8 +1,10 @@
 package dev.javarush.feeder.cli;
 
+import com.google.common.eventbus.EventBus;
 import dev.javarush.feeder.content.InMemoryUserFeedEntryRepository;
-import dev.javarush.feeder.content.UserFeedEntry;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
+import dev.javarush.feeder.content.UserFeedEntryService;
+import dev.javarush.feeder.content.UserSubscribedListener;
 import dev.javarush.feeder.feed.FeedRepository;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.feed.InMemoryFeedRepository;
@@ -18,13 +20,19 @@ import java.util.Scanner;
 
 public class FeederApp {
 
+    private static final EventBus eventBus = new EventBus();
     private static final UserRepository userRepository = new InMemoryUserRepository();
     private static final FeedRepository feedRepository = new InMemoryFeedRepository();
     private static final UserFeedEntryRepository userFeedEntryRepository = new InMemoryUserFeedEntryRepository();
     private static final FeedService feedService = new FeedService(feedRepository, new RomeFeedFetcher());
-    private static final UserService userService = new UserService(userRepository, feedService, userFeedEntryRepository);
+    private static final UserFeedEntryService userFeedEntryService = new UserFeedEntryService(userFeedEntryRepository);
+    private static final UserService userService = new UserService(userRepository, feedService, eventBus);
 
     public static void main(String[] args) {
+        // Wire up the content listener
+        UserSubscribedListener contentListener = new UserSubscribedListener(userFeedEntryService);
+        eventBus.register(contentListener);
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Java Feeder CLI!");
         System.out.println("Available commands: user-create, subscribe, list-subs, list-content, exit");
@@ -94,7 +102,7 @@ public class FeederApp {
                 System.err.println("Warning: " + e.getMessage());
             } catch (Exception e) {
                 System.err.println("Critical Error: " + e.getClass().getSimpleName() + ": " + e.getMessage());
-                e.printStackTrace(); // Optional for debugging
+                e.printStackTrace(); 
             }
         }
     }
