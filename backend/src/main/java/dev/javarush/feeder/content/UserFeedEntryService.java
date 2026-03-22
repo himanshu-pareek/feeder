@@ -1,6 +1,7 @@
 package dev.javarush.feeder.content;
 
 import dev.javarush.feeder.feed.Feed;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -26,5 +27,12 @@ public class UserFeedEntryService {
                 .collect(Collectors.toList());
             userFeedEntryRepository.saveAll(userEntries);
         }
+    }
+
+    /**
+     * Retrieves all feed entries for the specified user.
+     */
+    public Collection<UserFeedEntry> getEntriesForUser(String userId) {
+        return userFeedEntryRepository.findByUserId(userId);
     }
 }

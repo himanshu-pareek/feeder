@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.subscription.Subscription;
 import java.net.URI;
-import java.util.Collection;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -22,11 +22,12 @@ class UserTest {
     void testSubscribeToFeed() {
         User user = new User("user-1");
         URI feedUri = URI.create("https://example.com/feed");
+        Feed feed = new Feed(feedUri, "Title", "Link", "Desc");
 
-        boolean subscribed = user.subscribeTo(feedUri);
+        boolean subscribed = user.subscribeTo(feed);
 
         assertTrue(subscribed);
-        assertTrue(user.isSubscribedTo(feedUri));
+        assertTrue(user.isSubscribedTo(feed));
         assertEquals(1, user.getSubscriptions().size());
         
         Subscription subscription = user.getSubscriptions().iterator().next();
@@ -37,9 +38,10 @@ class UserTest {
     void testSubscribeToDuplicateFeedReturnsFalse() {
         User user = new User("user-1");
         URI feedUri = URI.create("https://example.com/feed");
+        Feed feed = new Feed(feedUri, "Title", "Link", "Desc");
 
-        user.subscribeTo(feedUri);
-        boolean secondAttempt = user.subscribeTo(feedUri);
+        user.subscribeTo(feed);
+        boolean secondAttempt = user.subscribeTo(feed);
 
         assertFalse(secondAttempt);
         assertEquals(1, user.getSubscriptions().size());
@@ -49,12 +51,13 @@ class UserTest {
     void testUnsubscribeFromFeed() {
         User user = new User("user-1");
         URI feedUri = URI.create("https://example.com/feed");
-        user.subscribeTo(feedUri);
+        Feed feed = new Feed(feedUri, "Title", "Link", "Desc");
+        user.subscribeTo(feed);
 
         boolean unsubscribed = user.unsubscribeFrom(feedUri);
 
         assertTrue(unsubscribed);
-        assertFalse(user.isSubscribedTo(feedUri));
+        assertFalse(user.isSubscribedTo(feed));
         assertTrue(user.getSubscriptions().isEmpty());
     }
 

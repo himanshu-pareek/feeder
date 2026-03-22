@@ -1,5 +1,6 @@
 package dev.javarush.feeder.user;
 
+import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.subscription.Subscription;
 import java.net.URI;
 import java.util.Collection;
@@ -36,21 +37,21 @@ public class User {
      * Subscribes the user to a feed by its URI.
      * Returns true if newly subscribed, false if already subscribed.
      */
-    public boolean subscribeTo(URI feedUri) {
-        Objects.requireNonNull(feedUri, "feedUri must not be null");
-        if (isSubscribedTo(feedUri)) {
+    public boolean subscribeTo(Feed feed) {
+        Objects.requireNonNull(feed.getUri(), "feedUri must not be null");
+        if (isSubscribedTo(feed)) {
             return false;
         }
-        return this.subscriptions.add(new Subscription(feedUri));
+        return this.subscriptions.add(new Subscription(feed.getUri()));
     }
 
     public boolean unsubscribeFrom(URI feedUri) {
         return this.subscriptions.removeIf(sub -> sub.feedUri().equals(feedUri));
     }
 
-    public boolean isSubscribedTo(URI feedUri) {
+    public boolean isSubscribedTo(Feed feed) {
         return this.subscriptions.stream()
-            .anyMatch(sub -> sub.feedUri().equals(feedUri));
+            .anyMatch(sub -> sub.feedUri().equals(feed.getUri()));
     }
 
     @Override

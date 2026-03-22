@@ -26,7 +26,7 @@ public class FeederApp {
     private static final UserFeedEntryRepository userFeedEntryRepository = new InMemoryUserFeedEntryRepository();
     private static final FeedService feedService = new FeedService(feedRepository, new RomeFeedFetcher());
     private static final UserFeedEntryService userFeedEntryService = new UserFeedEntryService(userFeedEntryRepository);
-    private static final UserService userService = new UserService(userRepository, feedService, eventBus);
+    private static final UserService userService = new UserService(userRepository, eventBus);
 
     public static void main(String[] args) {
         // Wire up the content listener
@@ -60,7 +60,9 @@ public class FeederApp {
                         if (parts.length < 3) {
                             System.out.println("Usage: subscribe <userId> <feedURI>");
                         } else {
-                            userService.subscribe(parts[1], URI.create(parts[2]));
+                            var user = userService.getUser(parts[1]);
+                            var feed = feedService.getOrCreateFeed(URI.create(parts[2]));
+                            userService.subscribe(user, feed);
                             System.out.println("Subscribed successfully!");
                         }
                         break;
@@ -83,7 +85,7 @@ public class FeederApp {
                         if (parts.length < 2) {
                             System.out.println("Usage: list-content <userId>");
                         } else {
-                            var entries = userFeedEntryRepository.findByUserId(parts[1]);
+                            var entries = userFeedEntryService.getEntriesForUser(parts[1]);
                             System.out.println("Content for " + parts[1] + " (" + entries.size() + " items):");
                             entries.forEach(e -> System.out.println("- [" + (e.isRead() ? "X" : " ") + "] " + e.getTitle() + " (" + e.getLink() + ")"));
                         }
