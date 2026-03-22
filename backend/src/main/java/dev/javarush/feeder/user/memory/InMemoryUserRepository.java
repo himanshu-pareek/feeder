@@ -1,6 +1,7 @@
-package dev.javarush.feeder.user;
+package dev.javarush.feeder.user.memory;
 
-import java.util.Collection;
+import dev.javarush.feeder.user.User;
+import dev.javarush.feeder.user.UserRepository;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,15 +20,5 @@ public class InMemoryUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(String id) {
         return Optional.ofNullable(users.get(id));
-    }
-
-    @Override
-    public Collection<User> findAll() {
-        return users.values();
-    }
-
-    @Override
-    public void delete(String id) {
-        users.remove(id);
     }
 }

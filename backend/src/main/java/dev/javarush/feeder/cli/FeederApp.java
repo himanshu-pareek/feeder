@@ -1,18 +1,17 @@
 package dev.javarush.feeder.cli;
 
-import com.google.common.eventbus.EventBus;
-import dev.javarush.feeder.content.InMemoryUserFeedEntryRepository;
+import dev.javarush.feeder.content.memory.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryService;
-import dev.javarush.feeder.content.UserSubscribedListener;
+import dev.javarush.feeder.content.event.UserSubscribedListener;
 import dev.javarush.feeder.feed.FeedRepository;
 import dev.javarush.feeder.feed.FeedService;
-import dev.javarush.feeder.feed.InMemoryFeedRepository;
-import dev.javarush.feeder.feed.RomeFeedFetcher;
-import dev.javarush.feeder.user.AlreadySubscribedException;
-import dev.javarush.feeder.user.InMemoryUserRepository;
+import dev.javarush.feeder.feed.memory.InMemoryFeedRepository;
+import dev.javarush.feeder.feed.rome.RomeFeedFetcher;
+import dev.javarush.feeder.user.exception.AlreadySubscribedException;
+import dev.javarush.feeder.user.memory.InMemoryUserRepository;
 import dev.javarush.feeder.user.User;
-import dev.javarush.feeder.user.UserNotFoundException;
+import dev.javarush.feeder.user.exception.UserNotFoundException;
 import dev.javarush.feeder.user.UserRepository;
 import dev.javarush.feeder.user.UserService;
 import java.net.URI;
@@ -20,18 +19,16 @@ import java.util.Scanner;
 
 public class FeederApp {
 
-    private static final EventBus eventBus = new EventBus();
     private static final UserRepository userRepository = new InMemoryUserRepository();
     private static final FeedRepository feedRepository = new InMemoryFeedRepository();
     private static final UserFeedEntryRepository userFeedEntryRepository = new InMemoryUserFeedEntryRepository();
     private static final FeedService feedService = new FeedService(feedRepository, new RomeFeedFetcher());
     private static final UserFeedEntryService userFeedEntryService = new UserFeedEntryService(userFeedEntryRepository);
-    private static final UserService userService = new UserService(userRepository, eventBus);
+    private static final UserService userService = new UserService(userRepository);
 
     public static void main(String[] args) {
         // Wire up the content listener
-        UserSubscribedListener contentListener = new UserSubscribedListener(userFeedEntryService);
-        eventBus.register(contentListener);
+        UserSubscribedListener contentListener = new UserSubscribedListener(userFeedEntryService, feedService);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Java Feeder CLI!");

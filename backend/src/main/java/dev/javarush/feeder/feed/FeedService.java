@@ -1,5 +1,7 @@
 package dev.javarush.feeder.feed;
 
+import dev.javarush.feeder.feed.exception.FeedFetchException;
+import dev.javarush.feeder.feed.exception.FeedNotFoundException;
 import java.net.URI;
 import java.util.Objects;
 
@@ -29,4 +31,9 @@ public class FeedService {
                 }
             });
     }
+
+  public Feed getFeed(URI uri) {
+    return feedRepository.findByUri(uri)
+        .orElseThrow(() -> new FeedNotFoundException("Feed not found: " + uri));
+  }
 }

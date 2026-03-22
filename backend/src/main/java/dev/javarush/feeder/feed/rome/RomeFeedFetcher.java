@@ -1,15 +1,18 @@
-package dev.javarush.feeder.feed;
+package dev.javarush.feeder.feed.rome;
 
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import dev.javarush.feeder.feed.Feed;
+import dev.javarush.feeder.feed.FeedFetcher;
 import dev.javarush.feeder.feed.converters.SyndFeedToFeed;
+import dev.javarush.feeder.feed.exception.FeedFetchException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
-public class RomeFeedFetcher implements FeedFetcher{
+public class RomeFeedFetcher implements FeedFetcher {
   @Override
   public Feed fetchByUri(URI uri) {
     try {

@@ -1,11 +1,13 @@
-package dev.javarush.feeder.feed;
+package dev.javarush.feeder.feed.memory;
 
+import dev.javarush.feeder.feed.Feed;
+import dev.javarush.feeder.feed.FeedRepository;
 import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class InMemoryFeedRepository implements FeedRepository{
+public class InMemoryFeedRepository implements FeedRepository {
   private final Map<URI, Feed> feeds;
 
   public InMemoryFeedRepository() {

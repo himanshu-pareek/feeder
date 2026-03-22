@@ -4,12 +4,17 @@ import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.user.User;
 import dev.javarush.feeder.user.UserService;
+import dev.javarush.feeder.user.events.UserSubscribedEvent;
 import java.net.URI;
 import java.util.Objects;
+import org.jspecify.annotations.NonNull;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 
-public class SubscribeToAFeed {
+public class SubscribeToAFeed implements ApplicationEventPublisherAware {
   private final UserService userService;
   private final FeedService feedService;
+  private ApplicationEventPublisher eventPublisher;
 
   public SubscribeToAFeed(UserService userService, FeedService feedService) {
     this.userService = Objects.requireNonNull(userService);
@@ -20,5 +25,11 @@ public class SubscribeToAFeed {
     User user = userService.getUser(userId);
     Feed feed = feedService.getOrCreateFeed(feedUri);
     this.userService.subscribe(user, feed);
+    this.eventPublisher.publishEvent(new UserSubscribedEvent(userId, feedUri));
+  }
+
+  @Override
+  public void setApplicationEventPublisher(@NonNull ApplicationEventPublisher eventPublisher) {
+    this.eventPublisher = eventPublisher;
   }
 }

@@ -2,6 +2,7 @@ package dev.javarush.feeder.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import dev.javarush.feeder.content.memory.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedEntry;
 import java.net.URI;

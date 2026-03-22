@@ -1,5 +1,7 @@
-package dev.javarush.feeder.content;
+package dev.javarush.feeder.content.memory;
 
+import dev.javarush.feeder.content.UserFeedEntry;
+import dev.javarush.feeder.content.UserFeedEntryRepository;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;

@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.google.common.eventbus.EventBus;
 import dev.javarush.feeder.feed.Feed;
+import dev.javarush.feeder.user.exception.AlreadySubscribedException;
+import dev.javarush.feeder.user.exception.UserNotFoundException;
+import dev.javarush.feeder.user.memory.InMemoryUserRepository;
 import java.net.URI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,13 +16,11 @@ class UserServiceTest {
 
     private UserRepository userRepository;
     private UserService userService;
-    private EventBus eventBus;
 
     @BeforeEach
     void setUp() {
         userRepository = new InMemoryUserRepository();
-        eventBus = new EventBus();
-        userService = new UserService(userRepository, eventBus);
+        userService = new UserService(userRepository);
     }
 
     @Test
@@ -54,7 +54,7 @@ class UserServiceTest {
 
     @Test
     void testGetUserThrowsExceptionIfNotFound() {
-        assertThrows(UserNotFoundException.class, () -> 
+        assertThrows(UserNotFoundException.class, () ->
             userService.getUser("non-existent")
         );
     }
@@ -69,7 +69,7 @@ class UserServiceTest {
         userRepository.save(user);
 
         // Act & Assert
-        assertThrows(AlreadySubscribedException.class, () -> 
+        assertThrows(AlreadySubscribedException.class, () ->
             userService.subscribe(user, feed)
         );
     }

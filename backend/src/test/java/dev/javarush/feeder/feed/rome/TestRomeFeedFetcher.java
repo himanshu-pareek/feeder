@@ -1,4 +1,4 @@
-package dev.javarush.feeder.feed;
+package dev.javarush.feeder.feed.rome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import dev.javarush.feeder.feed.Enclosure;
+import dev.javarush.feeder.feed.FeedEntry;
+import dev.javarush.feeder.feed.FeedFetcher;
+import dev.javarush.feeder.feed.Person;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;

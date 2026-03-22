@@ -1,5 +1,7 @@
-package dev.javarush.feeder.feed;
+package dev.javarush.feeder.feed.memory;
 
+import dev.javarush.feeder.feed.Feed;
+import dev.javarush.feeder.feed.FeedEntry;
 import org.junit.jupiter.api.Test;
 import java.net.URI;
 import java.util.ArrayList;

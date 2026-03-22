@@ -1,4 +1,4 @@
-package dev.javarush.feeder.feed;
+package dev.javarush.feeder.feed.exception;
 
 public class FeedFetchException extends RuntimeException {
   public FeedFetchException(String message, Throwable cause) {

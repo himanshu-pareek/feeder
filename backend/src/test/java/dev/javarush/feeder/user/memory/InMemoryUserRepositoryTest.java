@@ -1,10 +1,11 @@
-package dev.javarush.feeder.user;
+package dev.javarush.feeder.user.memory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Collection;
+import dev.javarush.feeder.user.User;
+import dev.javarush.feeder.user.UserRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,26 +33,6 @@ class InMemoryUserRepositoryTest {
     @Test
     void testFindByIdNotFoundReturnsEmpty() {
         Optional<User> foundUser = userRepository.findById("non-existent");
-        assertTrue(foundUser.isEmpty());
-    }
-
-    @Test
-    void testFindAll() {
-        userRepository.save(new User("user-1"));
-        userRepository.save(new User("user-2"));
-
-        Collection<User> users = userRepository.findAll();
-
-        assertEquals(2, users.size());
-    }
-
-    @Test
-    void testDelete() {
-        userRepository.save(new User("user-1"));
-        userRepository.delete("user-1");
-
-        Optional<User> foundUser = userRepository.findById("user-1");
-
         assertTrue(foundUser.isEmpty());
     }
 }
