@@ -4,6 +4,7 @@ import dev.javarush.feeder.content.memory.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryService;
 import dev.javarush.feeder.content.event.UserSubscribedListener;
+import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
 import dev.javarush.feeder.feed.FeedFetcher;
 import dev.javarush.feeder.feed.FeedRepository;
 import dev.javarush.feeder.feed.FeedService;
@@ -46,6 +47,11 @@ public class ProjectConfig {
     @Bean
     public UserFeedEntryService userFeedEntryService(UserFeedEntryRepository userFeedEntryRepository) {
         return new UserFeedEntryService(userFeedEntryRepository);
+    }
+
+    @Bean
+    public FeedEntriesGetAction getFeedEntries(UserFeedEntryService userFeedEntryService) {
+        return new FeedEntriesGetAction(userFeedEntryService);
     }
 
     @Bean

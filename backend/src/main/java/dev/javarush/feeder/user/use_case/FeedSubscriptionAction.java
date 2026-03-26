@@ -11,12 +11,12 @@ import org.jspecify.annotations.NonNull;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 
-public class SubscribeToAFeed implements ApplicationEventPublisherAware {
+public class FeedSubscriptionAction implements ApplicationEventPublisherAware {
   private final UserService userService;
   private final FeedService feedService;
   private ApplicationEventPublisher eventPublisher;
 
-  public SubscribeToAFeed(UserService userService, FeedService feedService) {
+  public FeedSubscriptionAction(UserService userService, FeedService feedService) {
     this.userService = Objects.requireNonNull(userService);
     this.feedService = Objects.requireNonNull(feedService);
   }

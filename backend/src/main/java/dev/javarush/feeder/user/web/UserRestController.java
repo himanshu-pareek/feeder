@@ -1,6 +1,6 @@
 package dev.javarush.feeder.user.web;
 
-import dev.javarush.feeder.user.use_case.SubscribeToAFeed;
+import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
 import java.net.URI;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserRestController {
 
-    private final SubscribeToAFeed subscriptionUseCase;
+    private final FeedSubscriptionAction subscriptionUseCase;
 
-  public UserRestController(SubscribeToAFeed subscriptionUseCase) {
+  public UserRestController(FeedSubscriptionAction subscriptionUseCase) {
     this.subscriptionUseCase = subscriptionUseCase;
   }
 
