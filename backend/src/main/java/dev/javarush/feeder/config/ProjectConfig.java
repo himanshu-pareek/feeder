@@ -3,16 +3,21 @@ package dev.javarush.feeder.config;
 import dev.javarush.feeder.content.memory.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryService;
-import dev.javarush.feeder.content.event.UserSubscribedListener;
+import dev.javarush.feeder.content.event.FeedSubscriptionEventListener;
 import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
+import dev.javarush.feeder.event.EventPublisher;
+import dev.javarush.feeder.event.FeedSubscriptionEvent;
 import dev.javarush.feeder.feed.FeedFetcher;
 import dev.javarush.feeder.feed.FeedRepository;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.feed.memory.InMemoryFeedRepository;
 import dev.javarush.feeder.feed.rome.RomeFeedFetcher;
+import dev.javarush.feeder.user.event.UserFeedSubscriptionEventPublisher;
 import dev.javarush.feeder.user.memory.InMemoryUserRepository;
 import dev.javarush.feeder.user.UserRepository;
 import dev.javarush.feeder.user.UserService;
+import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
+import dev.javarush.feeder.user.use_case.UserRegistrationAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -60,8 +65,30 @@ public class ProjectConfig {
     }
 
     @Bean
-    public UserSubscribedListener userSubscribedListener(UserFeedEntryService userFeedEntryService, FeedService feedService) {
-        UserSubscribedListener listener = new UserSubscribedListener(userFeedEntryService, feedService);
-        return listener;
+    UserRegistrationAction userRegistrationAction(UserService userService) {
+        return new UserRegistrationAction(userService);
+    }
+
+    @Bean
+    EventPublisher<FeedSubscriptionEvent> feedSubscriptionEventEventPublisher() {
+        return new UserFeedSubscriptionEventPublisher();
+    }
+
+    @Bean
+    FeedSubscriptionAction feedSubscriptionAction(
+        UserService userService,
+        FeedService feedService,
+        EventPublisher<FeedSubscriptionEvent> feedSubscriptionEventPublisher
+    ) {
+        return new FeedSubscriptionAction(
+            userService,
+            feedService,
+            feedSubscriptionEventPublisher
+        );
+    }
+
+    @Bean
+    public FeedSubscriptionEventListener userSubscribedListener(UserFeedEntryService userFeedEntryService, FeedService feedService) {
+      return new FeedSubscriptionEventListener(userFeedEntryService, feedService);
     }
 }

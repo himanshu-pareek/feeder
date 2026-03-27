@@ -1,9 +1,8 @@
 package dev.javarush.feeder.cli;
 
 import dev.javarush.feeder.content.memory.InMemoryUserFeedEntryRepository;
-import dev.javarush.feeder.content.UserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryService;
-import dev.javarush.feeder.content.event.UserSubscribedListener;
+import dev.javarush.feeder.content.event.FeedSubscriptionEventListener;
 import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.feed.memory.InMemoryFeedRepository;
@@ -13,6 +12,7 @@ import dev.javarush.feeder.user.memory.InMemoryUserRepository;
 import dev.javarush.feeder.user.exception.UserNotFoundException;
 import dev.javarush.feeder.user.UserService;
 import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
+import dev.javarush.feeder.user.use_case.UserRegistrationAction;
 import java.net.URI;
 import java.util.Scanner;
 
@@ -20,6 +20,7 @@ public class FeederApp {
 
     private FeedSubscriptionAction feedSubscriptionAction;
     private FeedEntriesGetAction feedEntriesGetAction;
+    private UserRegistrationAction userRegistrationAction;
 
     public static void main(String[] args) {
         new FeederApp().run();
@@ -42,20 +43,28 @@ public class FeederApp {
 
             try {
                 switch (command) {
+                    case "user-create":
+                        userRegistrationAction.execute(parts[1]);
+                        break;
+
                     case "subscribe":
                         if (parts.length < 3) {
                             System.out.println("Usage: subscribe <userId> <feedURI>");
                         } else {
-                            feedSubscriptionAction.execute(parts[1], URI.create(parts[2]));
-                            System.out.println("Subscribed successfully!");
+                            try {
+                                feedSubscriptionAction.execute(parts[1], URI.create(parts[2]));
+                                System.out.println("Subscribed successfully!");
+                            } catch (Throwable t) {
+                                System.out.println("Unable to subscribe to " + parts[2]);
+                                System.out.println(t.getLocalizedMessage());
+                            }
                         }
                         break;
 
-                    case "list-subs":
-                        if (parts.length < 2) {
-                            System.out.println("Usage: list-subs <userId>");
-                        } else {
-                            System.out.println("Not implemented yet...");
+//                    case "list-subs":
+//                        if (parts.length < 2) {
+//                            System.out.println("Usage: list-subs <userId>");
+//                        } else {
 //                            userRepository.findById(parts[1]).ifPresentOrElse(
 //                                user -> {
 //                                    System.out.println("Subscriptions for " + parts[1] + ":");
@@ -63,8 +72,8 @@ public class FeederApp {
 //                                },
 //                                () -> System.out.println("User not found.")
 //                            );
-                        }
-                        break;
+//                        }
+//                        break;
 
                     case "list-content":
                         if (parts.length < 2) {
@@ -98,12 +107,14 @@ public class FeederApp {
         final FeedService feedService = new FeedService( new InMemoryFeedRepository(), new RomeFeedFetcher());
         final UserFeedEntryService userFeedEntryService = new UserFeedEntryService(new InMemoryUserFeedEntryRepository());
         final UserService userService = new UserService(new InMemoryUserRepository());
+        FeedSubscriptionEventListener feedSubscriptionEventListener =
+            new FeedSubscriptionEventListener(userFeedEntryService, feedService);
         this.feedSubscriptionAction = new FeedSubscriptionAction(
             userService,
-            feedService
+            feedService,
+            feedSubscriptionEventListener::handleFeedSubscription
         );
         this.feedEntriesGetAction = new FeedEntriesGetAction(userFeedEntryService);
-
-        new UserSubscribedListener(userFeedEntryService, feedService);
+        this.userRegistrationAction = new UserRegistrationAction(userService);
     }
 }

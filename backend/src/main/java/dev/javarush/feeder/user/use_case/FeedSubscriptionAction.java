@@ -1,35 +1,30 @@
 package dev.javarush.feeder.user.use_case;
 
+import dev.javarush.feeder.event.EventPublisher;
 import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.user.User;
 import dev.javarush.feeder.user.UserService;
-import dev.javarush.feeder.user.events.UserSubscribedEvent;
+import dev.javarush.feeder.event.FeedSubscriptionEvent;
 import java.net.URI;
 import java.util.Objects;
-import org.jspecify.annotations.NonNull;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
 
-public class FeedSubscriptionAction implements ApplicationEventPublisherAware {
+public class FeedSubscriptionAction{
   private final UserService userService;
   private final FeedService feedService;
-  private ApplicationEventPublisher eventPublisher;
+  private final EventPublisher<FeedSubscriptionEvent> eventPublisher;
 
-  public FeedSubscriptionAction(UserService userService, FeedService feedService) {
+  public FeedSubscriptionAction(UserService userService, FeedService feedService,
+                                EventPublisher<FeedSubscriptionEvent> eventPublisher) {
     this.userService = Objects.requireNonNull(userService);
     this.feedService = Objects.requireNonNull(feedService);
+    this.eventPublisher = Objects.requireNonNull(eventPublisher);
   }
 
   public void execute(String userId, URI feedUri) {
     User user = userService.getUser(userId);
     Feed feed = feedService.getOrCreateFeed(feedUri);
     this.userService.subscribe(user, feed);
-    this.eventPublisher.publishEvent(new UserSubscribedEvent(userId, feedUri));
-  }
-
-  @Override
-  public void setApplicationEventPublisher(@NonNull ApplicationEventPublisher eventPublisher) {
-    this.eventPublisher = eventPublisher;
+    this.eventPublisher.publish(new FeedSubscriptionEvent(userId, feedUri));
   }
 }

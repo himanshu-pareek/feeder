@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("com.rometools:rome:2.1.0")
     implementation(libs.guava)
 
