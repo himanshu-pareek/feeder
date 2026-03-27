@@ -23,9 +23,8 @@ public class FeedSubscriptionEventListener {
         this.feedService = Objects.requireNonNull(feedService);
     }
 
-    @EventListener(FeedSubscriptionEventListener.class)
+    @EventListener(FeedSubscriptionEvent.class)
     public void handleFeedSubscription(FeedSubscriptionEvent event) {
-        System.out.println("Handling subscription event");
         Feed feed = this.feedService.getFeed(event.feedUri());
         userFeedEntryService.createEntriesForUser(event.userId(), feed);
     }

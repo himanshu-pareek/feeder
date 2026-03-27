@@ -12,7 +12,6 @@ public class UserFeedSubscriptionEventPublisher
 
   @Override
   public void publish(FeedSubscriptionEvent event) {
-    System.out.println("Publishing event: " + event);
     this.eventPublisher.publishEvent(event);
   }
 
