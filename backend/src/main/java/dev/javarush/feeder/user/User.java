@@ -42,7 +42,7 @@ public class User {
         if (isSubscribedTo(feed)) {
             return false;
         }
-        return this.subscriptions.add(new Subscription(feed.getUri()));
+        return this.subscriptions.add(new Subscription(feed.getUri(), feed.getTitle()));
     }
 
     public boolean unsubscribeFrom(URI feedUri) {
