@@ -36,8 +36,8 @@ public class UserRestController {
   }
 
   @PostMapping("/subscribe")
-  void subscribe(@RequestParam String feedUri, Authentication authentication) {
-    this.subscriptionUseCase.execute(authentication.getName(), URI.create(feedUri));
+  void subscribe(@RequestParam URI feedUri, Authentication authentication) {
+    this.subscriptionUseCase.execute(authentication.getName(), feedUri);
   }
 
   @PostMapping("/register")
