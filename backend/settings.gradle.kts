@@ -11,3 +11,9 @@ plugins {
 }
 
 rootProject.name = "feeder"
+
+include("core")
+include("api")
+include("cli")
+include("job-processor")
+include("memory")
