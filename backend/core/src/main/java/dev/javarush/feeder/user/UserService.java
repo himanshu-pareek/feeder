@@ -4,6 +4,8 @@ import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.user.exception.AlreadySubscribedException;
 import dev.javarush.feeder.user.exception.UserAlreadyExistException;
 import dev.javarush.feeder.user.exception.UserNotFoundException;
+import java.net.URI;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -40,5 +42,9 @@ public class UserService {
       throw new UserAlreadyExistException("User already exist: " + user.getId());
     }
     this.userRepository.save(user);
+  }
+
+  public Collection<User> getSubscribersFor(URI feedUri) {
+    return this.userRepository.findAllSubscribedTo(feedUri);
   }
 }

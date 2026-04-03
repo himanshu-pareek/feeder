@@ -18,6 +18,7 @@ public class Feed {
     private String feedType;
     private String managingEditor;
     private String webMaster;
+    private LocalDateTime lastSyncedAt;
 
 
     public Feed(URI uri, String title, String link, String description) {
@@ -40,6 +41,7 @@ public class Feed {
         this.feedType = other.feedType;
         this.managingEditor = other.managingEditor;
         this.webMaster = other.webMaster;
+        this.lastSyncedAt = other.lastSyncedAt;
     }
 
     public URI getUri() {
@@ -126,6 +128,14 @@ public class Feed {
         this.webMaster = webMaster;
     }
 
+    public LocalDateTime getLastSyncedAt() {
+        return lastSyncedAt;
+    }
+
+    public void setLastSyncedAt(LocalDateTime lastSyncedAt) {
+        this.lastSyncedAt = lastSyncedAt;
+    }
+
     @Override
     public String toString() {
         return "Feed{" +
@@ -141,6 +151,7 @@ public class Feed {
             ", feedType='" + feedType + '\'' +
             ", managingEditor='" + managingEditor + '\'' +
             ", webMaster='" + webMaster + '\'' +
+            ", lastSyncedAt=" + lastSyncedAt + '\'' +
             '}';
     }
 }

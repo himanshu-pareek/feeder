@@ -11,6 +11,8 @@ import dev.javarush.feeder.feed.exception.FeedFetchException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 public class RomeFeedFetcher implements FeedFetcher {
   @Override
@@ -30,6 +32,7 @@ public class RomeFeedFetcher implements FeedFetcher {
         SyndFeed syndFeed = syndFeedInput.build(reader);
         var feed = SyndFeedToFeed.convert(syndFeed);
         feed.setUri(uri);
+        feed.setLastSyncedAt(LocalDateTime.now(ZoneOffset.UTC));
         return feed;
       }
     } catch (IOException e) {

@@ -2,9 +2,11 @@ package dev.javarush.feeder.cli;
 
 import dev.javarush.feeder.content.UserFeedEntryService;
 import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
+import dev.javarush.feeder.content.use_case.UserFeedEntriesSyncAction;
 import dev.javarush.feeder.feed.Feed;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.feed.rome.RomeFeedFetcher;
+import dev.javarush.feeder.feed.use_case.FeedSyncAction;
 import dev.javarush.feeder.memory.content.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.memory.feed.InMemoryFeedRepository;
 import dev.javarush.feeder.memory.user.InMemoryUserRepository;
@@ -23,6 +25,7 @@ public class FeederCLI {
     private FeedEntriesGetAction feedEntriesGetAction;
     private UserRegistrationAction userRegistrationAction;
     private UserService userService;
+    private FeedSyncAction feedSyncAction;
 
     static void main() {
         new FeederCLI().run();
@@ -33,7 +36,7 @@ public class FeederCLI {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Java Feeder CLI!");
-        System.out.println("Available commands: user-create, subscribe, list-subs, list-content, exit");
+        System.out.println("Available commands: user-create, subscribe, list-subs, list-content, sync, exit");
 
         while (scanner.hasNextLine()) {
             System.out.print("> ");
@@ -85,6 +88,15 @@ public class FeederCLI {
                         }
                         break;
 
+                    case "sync":
+                        if (parts.length > 1) {
+                            System.err.println("Usage: sync");
+                        } else {
+                            feedSyncAction.syncFeeds();
+                            System.out.println(":) Feeds synced");
+                        }
+                        break;
+
                     case "exit":
                         System.out.println("Goodbye!");
                         return;
@@ -116,5 +128,16 @@ public class FeederCLI {
         );
         this.feedEntriesGetAction = new FeedEntriesGetAction(userFeedEntryService);
         this.userRegistrationAction = new UserRegistrationAction(userService);
+        UserFeedEntriesSyncAction userFeedEntriesSyncAction = new UserFeedEntriesSyncAction(
+            userService,
+            userFeedEntryService,
+            feedService
+        );
+        this.feedSyncAction = new FeedSyncAction(
+            feedService,
+            event -> {
+                userFeedEntriesSyncAction.execute(event.feedUri());
+            }
+        );
     }
 }

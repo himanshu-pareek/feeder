@@ -3,7 +3,11 @@ package dev.javarush.feeder.feed;
 import dev.javarush.feeder.feed.exception.FeedFetchException;
 import dev.javarush.feeder.feed.exception.FeedNotFoundException;
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Collection;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class FeedService {
 
@@ -23,17 +27,36 @@ public class FeedService {
         return feedRepository.findByUri(feedUri)
             .orElseGet(() -> {
                 try {
-                    Feed fetchedFeed = feedFetcher.fetchByUri(feedUri);
-                    feedRepository.save(fetchedFeed);
-                    return fetchedFeed;
+                  return fetchAndSave(feedUri);
                 } catch (Exception e) {
                     throw new FeedFetchException("Failed to fetch feed: " + feedUri, e);
                 }
             });
     }
 
+  private Feed fetchAndSave(URI feedUri) {
+    Feed fetchedFeed = feedFetcher.fetchByUri(feedUri);
+    feedRepository.save(fetchedFeed);
+    return fetchedFeed;
+  }
+
   public Feed getFeed(URI uri) {
     return feedRepository.findByUri(uri)
         .orElseThrow(() -> new FeedNotFoundException("Feed not found: " + uri));
+  }
+
+  private void syncFeed(Feed feed) {
+      fetchAndSave(feed.getUri());
+  }
+
+  public void syncFeeds(Consumer<Feed> afterSyncingFeed) {
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("utc"));
+    this.feedRepository.findAll()
+        .stream()
+        .filter(feed -> feed.getLastSyncedAt().isBefore(now))
+        .forEach(feed -> {
+          syncFeed(feed);
+          afterSyncingFeed.accept(feed);
+        });
   }
 }
