@@ -14,7 +14,9 @@ repositories {
 dependencies {
     implementation(project(":core"))
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.postgresql:postgresql")
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-postgresql")
     implementation("com.fasterxml.jackson.core:jackson-databind")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
