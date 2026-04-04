@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface UserFeedEntryRepository {
-    record EntryKey(String userId, URI feedUri, URI feedEntryUri) {}
+  boolean containsEntry(String userId, URI feedUri, String entryUri);
+
+  record EntryKey(String userId, URI feedUri, URI feedEntryUri) {}
     
     void save(UserFeedEntry entry);
     void saveAll(Collection<UserFeedEntry> entries);

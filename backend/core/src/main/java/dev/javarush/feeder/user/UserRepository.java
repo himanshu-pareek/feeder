@@ -11,5 +11,5 @@ public interface UserRepository {
     void save(User user);
     Optional<User> findById(String id);
 
-  Collection<User> findAllSubscribedTo(URI feedUri);
+  Collection<String> findAllSubscribedTo(URI feedUri);
 }

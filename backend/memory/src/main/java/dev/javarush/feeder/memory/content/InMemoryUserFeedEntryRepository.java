@@ -2,6 +2,7 @@ package dev.javarush.feeder.memory.content;
 
 import dev.javarush.feeder.content.UserFeedEntry;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
+import java.net.URI;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -10,6 +11,17 @@ import java.util.stream.Collectors;
 
 public class InMemoryUserFeedEntryRepository implements UserFeedEntryRepository {
     private final Map<EntryKey, UserFeedEntry> entries = new ConcurrentHashMap<>();
+
+    @Override
+    public boolean containsEntry(String userId, URI feedUri, String entryUri) {
+        return entries.containsKey(
+            new EntryKey(
+                userId,
+                feedUri,
+                URI.create(entryUri)
+            )
+        );
+    }
 
     @Override
     public void save(UserFeedEntry entry) {

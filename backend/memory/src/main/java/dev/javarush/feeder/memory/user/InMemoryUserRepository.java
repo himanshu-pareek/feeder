@@ -26,7 +26,7 @@ public class InMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public Collection<User> findAllSubscribedTo(URI feedUri) {
+    public Collection<String> findAllSubscribedTo(URI feedUri) {
         return users.values().stream()
             .filter(user ->
                     user.getSubscriptions().stream()
@@ -34,6 +34,7 @@ public class InMemoryUserRepository implements UserRepository {
                             subscription.feedUri().equals(feedUri)
                         )
             )
+            .map(User::getId)
             .collect(Collectors.toList());
     }
 }

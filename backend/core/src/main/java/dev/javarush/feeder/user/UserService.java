@@ -44,7 +44,7 @@ public class UserService {
     this.userRepository.save(user);
   }
 
-  public Collection<User> getSubscribersFor(URI feedUri) {
+  public Collection<String> getSubscribersFor(URI feedUri) {
     return this.userRepository.findAllSubscribedTo(feedUri);
   }
 }

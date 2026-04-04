@@ -2,14 +2,17 @@ package dev.javarush.feeder.feed;
 
 import dev.javarush.feeder.feed.exception.FeedFetchException;
 import dev.javarush.feeder.feed.exception.FeedNotFoundException;
+import dev.javarush.feeder.util.DateTimeUtil;
 import java.net.URI;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Consumer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FeedService {
+
+  private static Logger logger = LoggerFactory.getLogger(FeedService.class);
 
     private final FeedRepository feedRepository;
     private final FeedFetcher feedFetcher;
@@ -46,11 +49,12 @@ public class FeedService {
   }
 
   private void syncFeed(Feed feed) {
+      logger.info("Syncing feed {}", feed.getUri());
       fetchAndSave(feed.getUri());
   }
 
   public void syncFeeds(Consumer<Feed> afterSyncingFeed) {
-    LocalDateTime now = LocalDateTime.now(ZoneId.of("utc"));
+    LocalDateTime now = DateTimeUtil.nowInUTC();
     this.feedRepository.findAll()
         .stream()
         .filter(feed -> feed.getLastSyncedAt().isBefore(now))

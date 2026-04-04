@@ -21,8 +21,8 @@ public class UserFeedEntriesSyncAction {
   public void execute(URI feedUri) {
     Feed feed = feedService.getFeed(feedUri);
     userService.getSubscribersFor(feed.getUri())
-        .forEach(user -> {
-          userFeedEntryService.createEntriesForUser(user.getId(), feed);
+        .forEach(userId -> {
+          userFeedEntryService.createEntriesForUser(userId, feed);
         });
   }
 }

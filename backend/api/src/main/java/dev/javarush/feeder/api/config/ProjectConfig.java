@@ -1,15 +1,20 @@
 package dev.javarush.feeder.api.config;
 
+import dev.javarush.feeder.api.event.FeedSyncEventListener;
+import dev.javarush.feeder.api.event.FeedSyncEventPublisher;
 import dev.javarush.feeder.content.UserFeedEntryRepository;
 import dev.javarush.feeder.content.UserFeedEntryService;
 import dev.javarush.feeder.api.event.FeedSubscriptionEventListener;
 import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
+import dev.javarush.feeder.content.use_case.UserFeedEntriesSyncAction;
 import dev.javarush.feeder.event.EventPublisher;
 import dev.javarush.feeder.event.FeedSubscribe;
+import dev.javarush.feeder.event.FeedSync;
 import dev.javarush.feeder.feed.FeedFetcher;
 import dev.javarush.feeder.feed.FeedRepository;
 import dev.javarush.feeder.feed.FeedService;
 import dev.javarush.feeder.feed.rome.RomeFeedFetcher;
+import dev.javarush.feeder.feed.use_case.FeedSyncAction;
 import dev.javarush.feeder.memory.content.InMemoryUserFeedEntryRepository;
 import dev.javarush.feeder.memory.feed.InMemoryFeedRepository;
 import dev.javarush.feeder.memory.user.InMemoryUserRepository;
@@ -20,8 +25,10 @@ import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
 import dev.javarush.feeder.user.use_case.UserRegistrationAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @Configuration
+@EnableAsync
 public class ProjectConfig {
 
     @Bean
@@ -88,7 +95,35 @@ public class ProjectConfig {
     }
 
     @Bean
-    public FeedSubscriptionEventListener userSubscribedListener(UserFeedEntryService userFeedEntryService, FeedService feedService) {
+    FeedSubscriptionEventListener userSubscribedListener(UserFeedEntryService userFeedEntryService, FeedService feedService) {
       return new FeedSubscriptionEventListener(userFeedEntryService, feedService);
+    }
+
+    @Bean
+    UserFeedEntriesSyncAction userFeedEntriesSyncAction(
+        UserService userService,
+        FeedService feedService,
+        UserFeedEntryService userFeedEntryService
+    ) {
+        return new UserFeedEntriesSyncAction(
+            userService,
+            userFeedEntryService,
+            feedService
+        );
+    }
+
+    @Bean
+    FeedSyncEventListener feedSyncEventListener(UserFeedEntriesSyncAction userFeedEntriesSyncAction) {
+        return new FeedSyncEventListener(userFeedEntriesSyncAction);
+    }
+
+    @Bean
+    EventPublisher<FeedSync> feedSyncEventPublisher() {
+        return new FeedSyncEventPublisher();
+    }
+
+    @Bean
+    FeedSyncAction feedSyncAction(FeedService feedService, EventPublisher<FeedSync> feedSyncEventPublisher) {
+        return new FeedSyncAction(feedService, feedSyncEventPublisher);
     }
 }
