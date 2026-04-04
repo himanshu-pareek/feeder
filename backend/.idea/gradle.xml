@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/job-processor" />
             <option value="$PROJECT_DIR$/memory" />
+            <option value="$PROJECT_DIR$/postgresql" />
           </set>
         </option>
       </GradleProjectSettings>

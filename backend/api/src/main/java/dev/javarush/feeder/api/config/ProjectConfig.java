@@ -23,6 +23,11 @@ import dev.javarush.feeder.user.UserService;
 import dev.javarush.feeder.api.event.UserFeedSubscriptionEventPublisher;
 import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
 import dev.javarush.feeder.user.use_case.UserRegistrationAction;
+import dev.javarush.feeder.postgresql.content.JdbcUserFeedEntryRepository;
+import dev.javarush.feeder.postgresql.feed.JdbcFeedRepository;
+import dev.javarush.feeder.postgresql.user.JdbcUserRepository;
+import javax.sql.DataSource;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -32,18 +37,39 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class ProjectConfig {
 
     @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "memory", matchIfMissing = true)
     public UserRepository userRepository() {
         return new InMemoryUserRepository();
     }
 
     @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "jdbc")
+    public UserRepository jdbcUserRepository(DataSource dataSource) {
+        return new JdbcUserRepository(dataSource);
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "memory", matchIfMissing = true)
     public FeedRepository feedRepository() {
         return new InMemoryFeedRepository();
     }
 
     @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "jdbc")
+    public FeedRepository jdbcFeedRepository(DataSource dataSource) {
+        return new JdbcFeedRepository(dataSource);
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "memory", matchIfMissing = true)
     public UserFeedEntryRepository userFeedEntryRepository() {
         return new InMemoryUserFeedEntryRepository();
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "repository.type", havingValue = "jdbc")
+    public UserFeedEntryRepository jdbcUserFeedEntryRepository(DataSource dataSource) {
+        return new JdbcUserFeedEntryRepository(dataSource);
     }
 
     @Bean
