@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: feeder-api-config
+  labels:
+    app: feeder-api
+data:
+  FEED_SYNC_ALLOWED_USERS: "user"
+  REPOSITORY_TYPE: "jdbc"
+
