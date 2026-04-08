@@ -25,7 +25,7 @@ class UserFeedEntryServiceTest {
     }
 
     @Test
-    void testCreateEntriesForUserWithDuplicateKeyOverwrites() {
+    void testCreateEntriesForUserWithDuplicateKeyIgnores() {
         // Arrange
         String userId = "user-1";
         URI feedUri = URI.create("https://example.com/rss");
@@ -48,9 +48,9 @@ class UserFeedEntryServiceTest {
         
         // Should still be only 1 entry because they have the same identity
         assertEquals(1, userEntries.size());
-        
-        // The title should be from the latest save (overwritten)
-        assertEquals("Modified Title", userEntries.iterator().next().getTitle());
+
+        // The title should be from the older save (ignoring)
+        assertEquals("Original Title", userEntries.iterator().next().getTitle());
     }
 
     @Test
