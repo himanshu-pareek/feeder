@@ -10,15 +10,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: feeder
-      stack: backend
-      layer: api
+      app: feeder-api
   template:
     metadata:
       labels:
-        app: feeder
-        stack: backend
-        layer: api
+        app: feeder-api
     spec:
       containers:
       - name: api
@@ -37,4 +33,15 @@ spec:
           limits:
             memory: "5G"
             cpu: "1"
-
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 20
