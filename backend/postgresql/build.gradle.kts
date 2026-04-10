@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     id("java")
     id("org.springframework.boot") version "4.0.4"
@@ -5,7 +7,7 @@ plugins {
 }
 
 group = "dev.javarush.feeder"
-version = "unspecified"
+version = "v0.0.1"
 
 repositories {
     mavenCentral()
@@ -31,3 +33,12 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.named<BootJar>("bootJar") {
+	enabled = false
+}
+
+tasks.named<Jar>("jar") {
+	enabled = true
+}
+
