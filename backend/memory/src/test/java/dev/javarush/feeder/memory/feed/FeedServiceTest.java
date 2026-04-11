@@ -74,7 +74,7 @@ class FeedServiceTest {
         @Override
         public Feed fetchByUri(URI uri) {
             if (nextFeed != null) return nextFeed;
-            throw new RuntimeException("Fetch failed");
+            throw new FeedFetchException("Fetch failed", null);
         }
     }
 }

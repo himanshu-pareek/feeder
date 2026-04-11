@@ -1,8 +1,7 @@
-package dev.javarush.feeder.api.user;
+package dev.javarush.feeder.api.feed;
 
-import dev.javarush.feeder.user.exception.AlreadySubscribedException;
-import dev.javarush.feeder.user.exception.UserAlreadyExistException;
-import dev.javarush.feeder.user.exception.UserNotFoundException;
+import dev.javarush.feeder.feed.exception.FeedFetchException;
+import dev.javarush.feeder.feed.exception.FeedNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class UserRestControllerAdvice {
+public class FeedControllerAdvice {
   @ExceptionHandler({
-      UserNotFoundException.class,
+      FeedNotFoundException.class
   })
   ResponseEntity<ProblemDetail> handleNotFound(RuntimeException exception) {
     ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
@@ -25,12 +24,11 @@ public class UserRestControllerAdvice {
   }
 
   @ExceptionHandler({
-      UserAlreadyExistException.class,
-      AlreadySubscribedException.class
+      FeedFetchException.class
   })
-  ResponseEntity<ProblemDetail> handleBadRequest(RuntimeException exception) {
+  ResponseEntity<ProblemDetail> handleServerError(RuntimeException exception) {
     ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
-        HttpStatus.BAD_REQUEST,
+        HttpStatus.INTERNAL_SERVER_ERROR,
         exception.getLocalizedMessage()
     );
     return ResponseEntity.of(

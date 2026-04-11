@@ -1,6 +1,5 @@
 package dev.javarush.feeder.feed;
 
-import dev.javarush.feeder.feed.exception.FeedFetchException;
 import dev.javarush.feeder.feed.exception.FeedNotFoundException;
 import dev.javarush.feeder.util.DateTimeUtil;
 import java.net.URI;
@@ -28,13 +27,7 @@ public class FeedService {
      */
     public Feed getOrCreateFeed(URI feedUri) {
         return feedRepository.findByUri(feedUri)
-            .orElseGet(() -> {
-                try {
-                  return fetchAndSave(feedUri);
-                } catch (Exception e) {
-                    throw new FeedFetchException("Failed to fetch feed: " + feedUri, e);
-                }
-            });
+            .orElseGet(() -> fetchAndSave(feedUri));
     }
 
   private Feed fetchAndSave(URI feedUri) {

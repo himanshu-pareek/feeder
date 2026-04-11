@@ -1,5 +1,6 @@
 package dev.javarush.feeder.api.content;
 
+import dev.javarush.feeder.content.UserFeedEntries;
 import dev.javarush.feeder.content.UserFeedEntry;
 import dev.javarush.feeder.content.use_case.FeedEntriesGetAction;
 import java.util.Collection;
@@ -19,7 +20,7 @@ public class UserFeedEntryRestController {
     }
 
     @GetMapping
-    public Collection<UserFeedEntry> getEntries(Authentication authentication) {
+    public UserFeedEntries getEntries(Authentication authentication) {
         return feedEntriesGetActionUseCase.execute(authentication.getName());
     }
 }

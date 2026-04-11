@@ -34,10 +34,8 @@ public class RomeFeedFetcher implements FeedFetcher {
         feed.setLastSyncedAt(DateTimeUtil.nowInUTC());
         return feed;
       }
-    } catch (IOException e) {
+    } catch (IOException | FeedException | RuntimeException e) {
       throw new FeedFetchException("Error while fetching feed " + e.getLocalizedMessage(), e);
-    } catch (FeedException e) {
-      throw new FeedFetchException("Error while parsing feed " + e.getLocalizedMessage(), e);
     }
   }
 }

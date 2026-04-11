@@ -84,7 +84,7 @@ public class FeederCLI {
                         } else {
                             var entries = feedEntriesGetAction.execute(parts[1]);
                             System.out.println("Content for " + parts[1] + " (" + entries.size() + " items):");
-                            entries.forEach(e -> System.out.println("- [" + (e.isRead() ? "X" : " ") + "] " + e.getTitle() + " (" + e.getLink() + ")"));
+                            entries.items().forEach(e -> System.out.println("- [" + (e.isRead() ? "X" : " ") + "] " + e.getTitle() + " (" + e.getLink() + ")"));
                         }
                         break;
 
