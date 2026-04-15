@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: http-route-feeder-api
+  namespace: default
+spec:
+  parentRefs:
+  - name: gateway-shared # Attaches to the Gateway created above
+
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /feeder/api/v1
+    backendRefs:
+    - name: feeder-api-v1
+      port: 80 # The port feeder api service is listening on

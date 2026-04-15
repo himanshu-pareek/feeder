@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: feeder-api-service
+  name: feeder-api-v1
   labels:
     app: feeder
     stack: backend
@@ -16,8 +16,4 @@ spec:
     protocol: TCP
     port: 80
     targetPort: 8080
-  - name: https
-    protocol: TCP
-    port: 443
-    targetPort: 8080
-  type: LoadBalancer # Exposing the application as requested
+  type: ClusterIP # Internal Traffic Only

@@ -28,6 +28,7 @@ public class SecurityConfig {
     http.authorizeHttpRequests(
         authz ->
             authz
+	    	.requestMatchers("/actuator/health/*").permitAll()
                 .requestMatchers("/feeds/sync").access(
                     new AuthorizationManager<>() {
                       @Override
