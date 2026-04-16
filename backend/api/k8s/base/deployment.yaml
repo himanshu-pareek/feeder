@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: asia-south1-docker.pkg.dev/project-3c1031a2-d22c-407b-a8b/feeder-application/backend-api:local-test # Placeholder
+        image: asia-south1-docker.pkg.dev/project-3c1031a2-d22c-407b-a8b/feeder-application/backend-api:v0.0.3 # Placeholder
         ports:
         - containerPort: 8080
         envFrom:
@@ -37,4 +37,29 @@ spec:
           limits:
             memory: "5G"
             cpu: "1"
+        # 1. STARTUP PROBE: Protects the slow startup
+        startupProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          failureThreshold: 15    # 15 attempts * 10 seconds = 150 seconds max wait time
+          periodSeconds: 10       # Check every 10 seconds
+          
+        # 2. LIVENESS PROBE: Restarts a deadlocked JVM
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          failureThreshold: 3
+          periodSeconds: 10
+          
+        # 3. READINESS PROBE: Controls traffic routing (fixes the 503 error)
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          failureThreshold: 3
+          periodSeconds: 10
+  
+
 

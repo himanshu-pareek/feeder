@@ -12,6 +12,12 @@ spec:
     - path:
         type: PathPrefix
         value: /feeder/api/v1
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: ""
     backendRefs:
     - name: feeder-api-v1
       port: 80 # The port feeder api service is listening on

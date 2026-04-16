@@ -1,0 +1,16 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: feeder-api-health-check
+  namespace: default
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 8080
+        requestPath: /actuator/health/readiness
+  targetRef:
+    group: ""
+    kind: Service
+    name: feeder-api-v1

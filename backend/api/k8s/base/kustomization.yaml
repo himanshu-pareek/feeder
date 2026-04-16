@@ -1,5 +1,7 @@
 resources:
-  - deployment.yaml
-  - service.yaml
-  - configmap.yaml
-  - secret.yaml
+- gateway-shared.yaml
+- http-route.yaml
+- service-internal.yaml
+- deployment.yaml
+- configmap.yaml
+- health-check-policy.yaml

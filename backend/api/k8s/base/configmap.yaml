@@ -7,4 +7,5 @@ metadata:
 data:
   FEED_SYNC_ALLOWED_USERS: "user"
   REPOSITORY_TYPE: "jdbc"
+  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health,info"
 
