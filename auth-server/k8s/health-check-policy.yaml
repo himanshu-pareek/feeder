@@ -1,0 +1,16 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: keycloak-health-check
+  namespace: default
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 9000
+        requestPath: /health/ready
+  targetRef:
+    group: ""
+    kind: Service
+    name: service-auth-keycloak
