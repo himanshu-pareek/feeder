@@ -2,6 +2,7 @@ package dev.javarush.feeder.api.user;
 
 import dev.javarush.feeder.user.User;
 import dev.javarush.feeder.user.UserService;
+import dev.javarush.feeder.user.exception.UserAlreadyExistException;
 import dev.javarush.feeder.user.use_case.FeedSubscriptionAction;
 import dev.javarush.feeder.user.use_case.UserRegistrationAction;
 import java.net.URI;
@@ -42,6 +43,10 @@ public class UserRestController {
 
   @PostMapping("/register")
   void register(Authentication authentication) {
-    this.userRegistrationAction.execute(authentication.getName());
+    try {
+      this.userRegistrationAction.execute(authentication.getName());
+    } catch (UserAlreadyExistException e) {
+      // Ignore the error
+    }
   }
 }
