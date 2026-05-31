@@ -5,6 +5,8 @@ metadata:
 spec:
   parentRefs:
     - name: gateway-shared
+  hostnames:
+    - "api.javarush.dev"
   rules:
     - matches:
       - path:

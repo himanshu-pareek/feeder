@@ -39,9 +39,9 @@ const formatDate = (dateString: string) => {
       <div class="text-sm text-gray-500 mb-2">
         <span>{{ formatDate(entry.publishedDate) }}</span>
       </div>
-      <p class="m-0 text-sm text-gray-600 line-clamp-2">
-        {{ entry.description }}
-      </p>
+<!--      <p class="m-0 text-sm text-gray-600 line-clamp-2">-->
+<!--        {{ entry.description }}-->
+<!--      </p>-->
     </div>
   </div>
 </template>
