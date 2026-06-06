@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/feeder.iml" filepath="$PROJECT_DIR$/.idea/feeder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/feeder.api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api/feeder.api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/feeder.api.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api/feeder.api.test.iml" />
     </modules>
   </component>
 </project>

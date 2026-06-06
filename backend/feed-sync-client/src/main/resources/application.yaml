@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Feeds Sync Client
+  security:
+    oauth2:
+      client:
+        provider:
+          provider1:
+            issuer-uri: ${OAUTH2_ISSUER_URI}
+        registration:
+          feed-sync-client:
+            provider: provider1
+            client-id: ${FEED_SYNC_CLIENT_ID}
+            client-secret: ${FEED_SYNC_CLIENT_SECRET}
+            authorization-grant-type: client_credentials
+            scope: ${FEED_SYNC_SCOPES}
+
+feeds:
+  sync:
+    schedule:
+      cron: ${FEED_SYNC_SCHEDULE_CRON}

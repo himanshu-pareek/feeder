@@ -5,6 +5,9 @@
       <module name="feeder.api" options="-parameters" />
       <module name="feeder.api.main" options="-parameters" />
       <module name="feeder.api.test" options="-parameters" />
+      <module name="feeder.feed-sync-client" options="-parameters" />
+      <module name="feeder.feed-sync-client.main" options="-parameters" />
+      <module name="feeder.feed-sync-client.test" options="-parameters" />
       <module name="feeder.postgresql" options="-parameters" />
       <module name="feeder.postgresql.main" options="-parameters" />
       <module name="feeder.postgresql.test" options="-parameters" />

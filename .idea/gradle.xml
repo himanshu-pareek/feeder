@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/backend/api" />
             <option value="$PROJECT_DIR$/backend/cli" />
             <option value="$PROJECT_DIR$/backend/core" />
+            <option value="$PROJECT_DIR$/backend/feed-sync-client" />
             <option value="$PROJECT_DIR$/backend/job-processor" />
             <option value="$PROJECT_DIR$/backend/memory" />
             <option value="$PROJECT_DIR$/backend/postgresql" />

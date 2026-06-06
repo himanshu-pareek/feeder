@@ -10,3 +10,5 @@ build
 # Ignore secret.yaml file
 api/k8s/base/secret.yaml
 
+*.env
+

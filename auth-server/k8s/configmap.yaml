@@ -7,7 +7,7 @@ metadata:
 data:
   KC_CACHE: ispn
   KC_HEALTH_ENABLED: "true"
-  KC_HOSTNAME: <Gateway-URL>/auth
+  KC_HOSTNAME: https://api.javarush.dev/auth
   KC_HOSTNAME_STRICT: "false"
   KC_HTTP_ENABLED: "true"
   KC_PROXY_HEADERS: xforwarded
